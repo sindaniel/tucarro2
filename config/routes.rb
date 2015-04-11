@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  namespace :admin do
+  get 'brands_truck/index'
+  end
+
+
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+    resource :brands_truck
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
