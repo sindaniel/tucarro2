@@ -1,8 +1,10 @@
 class Admin::BrandsTruckController < ApplicationController
   before_action :authenticate_user!
+  layout  'admin/layouts/application'
   def index
+    @brands = BrandTruck.all
   end
-  
+
   def show
 
   end
