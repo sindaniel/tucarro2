@@ -16,10 +16,11 @@ default: &default
   username: root
   password:
   host: localhost
+  socket: /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
 
 development:
   <<: *default
-  database: tucarro2_development
+  database: tucarro2
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
