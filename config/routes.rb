@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
     resources :trucks, :brands_truck,  :type_truck
 
+    resources :states do
+       resources :cities
+     end
+
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

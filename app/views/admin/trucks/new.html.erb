@@ -71,6 +71,31 @@
 
 
 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :state_id, 'Departamento' %>
+            <%= f.collection_select :state_id, State.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :city_id, 'Ciudad' %>
+            <%= f.select(:city_id, [['Seleccione departamento','' ]], {}, { :class => 'form-control' }) %>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
 
         <div class="row">
           <div class="col-md-6">
@@ -318,17 +343,66 @@
         </div>
       </div>
 
-
-
-
         <%= f.submit 'Guardar', :class=> 'btn btn-info' %>
         <%=  link_to 'Cancelar', admin_trucks_path, :class=>'btn btn-warning' %>
     <% end %>
 
-
-
   </div>
 </div>
+
+
+
+<script>
+    var ready;
+    ready = function() {
+
+        $('#truck_state_id').on('change', function() {
+
+            $('#truck_city_id option').html('')
+            function loader(data){
+                $('#truck_city_id option').html('Cargando...')
+            };
+
+            function error(data){
+                alert("Error enviados los datos");
+            };
+
+
+
+            $.ajax({
+                async: true,
+                type: "GET",
+                dataType: 'json',
+                beforeSend:loader,
+                error:error,
+                success: function (msg) {
+
+
+                    $('#truck_city_id').html('')
+
+
+                    $.each(msg, function(index, value) {
+                        console.log('<option value="'+value.id+'">'+value.name+'</option>');
+                        $('#truck_city_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                    });
+
+                },
+                url:"/admin/states/"+this.value+"/cities.json"
+            });
+
+
+
+
+
+        });
+
+    };
+
+    $(document).ready(ready);
+    $(document).on('page:load', ready);
+
+
+</script>
 
 
 
