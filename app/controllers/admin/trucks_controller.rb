@@ -1,7 +1,7 @@
 class Admin::TrucksController < ApplicationController
   before_action :authenticate_user!
   layout  'admin/layouts/application'
-  add_breadcrumb 'Caminiones', :admin_trucks_path, :options => { :title =>'Inicio' }
+  add_breadcrumb 'Camiones', :admin_trucks_path, :options => { :title =>'Inicio' }
 
   def index
     @trucks = Truck.all

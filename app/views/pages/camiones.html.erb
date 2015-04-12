@@ -1,5 +1,4 @@
 
-
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
@@ -311,89 +310,47 @@
 
 
 <!-- ========================================= SECTION – HERO : END ========================================= -->
-<div class="clearfix filters-container m-t-10">
-  <div class="row">
-    <div class="col col-sm-6 col-md-2">
-      <div class="filter-tabs">
-        <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-          <li class="active">
-            <a data-toggle="tab" href="#grid-container" style="padding:0px !important; background-color: #fff !important; cursor: pointer;"><i class="icon fa fa-th-list"></i></a>
-          </li>
-          <li><a data-toggle="tab" href="#list-container" style="padding:0px !important; background-color: #fff !important; cursor: pointer;"><i class="icon fa fa-th"></i></a></li>
-        </ul>
-      </div><!-- /.filter-tabs -->
-    </div><!-- /.col -->
-    <div class="col col-sm-12 col-md-6">
-      <div class="col col-sm-3 col-md-6 no-padding">
-        <div class="lbl-cnt">
-          <div class="fld inline">
-            <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-              <button data-toggle="dropdown" type="button" class="btn dropdown-toggle">
-                Más Relevante <span class="caret"></span>
-              </button>
 
-              <ul role="menu" class="dropdown-menu">
-                <li><a href="#">Menor Precio</a></li>
-                <li><a href="#">Mayor Precio</a></li>
-              </ul>
-            </div>
-          </div><!-- /.fld -->
-        </div><!-- /.lbl-cnt -->
-      </div><!-- /.col -->
-      <div class="col col-sm-3 col-md-6 no-padding">
-        <div class="lbl-cnt">
-          <span class="lbl">Artículos:	1-48 de 323	</span>
-
-        </div><!-- /.lbl-cnt -->
-      </div><!-- /.col -->
-    </div><!-- /.col -->
-    <div class="col col-sm-6 col-md-4 text-right">
-      <div class="pagination-container">
-        <ul class="list-inline list-unstyled">
-          <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-          <li><a href="#">1</a></li>
-          <li class="active"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-        </ul><!-- /.list-inline -->
-      </div><!-- /.pagination-container -->		</div><!-- /.col -->
-  </div><!-- /.row -->
-</div>
 <div class="search-result-container">
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane active " id="grid-container">
       <div class="category-product  inner-top-vs">
         <div class="row">
-
-          <% @trucks.each do |truck| %>
-
-
-              <div class="col-md-3 wow fadeInUp">
-                <div class="products"><div class="product">
-                  <div class="product-image"><div class="image">
-                    <a href="#"><img  src="assets/images/blank.gif" data-echo="assets/images/productos/1.jpg" alt=""></a>
-                  </div></div><!-- /.product-image -->
-                  <div class="product-info text-left">
-                    <h3 class="name"><a href="#"><%= truck.nombre %></a></h3>
-                    <div class="description"><%= truck.modelo %> | <%= truck.state.name %></div>
-                    <div class="product-price">
-                      <span class="price"><%= number_to_currency( truck.price) %></span>
-                    </div><!-- /.product-price -->
-                  </div><!-- /.product-info -->
-                  <div class="cart clearfix animate-effect">
-                    <div class="action">
-                      <ul class="list-unstyled">
-                        <li class="add-cart-button btn-group">
-                          <button class="btn btn-primary" type="button">Ver más</button>
-                        </li>
-                      </ul>
-                    </div><!-- /.action -->
-                  </div></div></div>
-              </div><!-- /.item -->
+          <% if !@trucks.nil? %>
+              <% @trucks.each do |truck| %>
 
 
+                  <div class="col-md-3 wow fadeInUp">
+                    <div class="products"><div class="product">
+                      <div class="product-image"><div class="image">
+                        <a href="<%= camion_path(truck.id, truck.link_rewrite) %>"><img  src="assets/images/blank.gif" data-echo="assets/images/productos/1.jpg" alt=""></a>
+                      </div></div><!-- /.product-image -->
+                      <div class="product-info text-left">
+                        <h3 class="name"><a href="#"><%= truck.nombre %></a></h3>
+                        <div class="description"><%= truck.modelo %> | <%= truck.state.name %></div>
+                        <div class="product-price">
+                          <span class="price"><%= number_to_currency( truck.price) %></span>
+                        </div><!-- /.product-price -->
+                      </div><!-- /.product-info -->
+                      <div class="cart clearfix animate-effect">
+                        <div class="action">
+                          <ul class="list-unstyled">
+                            <li class="add-cart-button btn-group">
+                              <a class="btn btn-primary"  href="<%= camion_path(truck.id, truck.link_rewrite) %>">Ver más</a>
+                            </li>
+                          </ul>
+                        </div><!-- /.action -->
+                      </div></div></div>
+                  </div><!-- /.item -->
+
+
+              <% end %>
+              <% else %>
+                   <p>
+                     No se encuentran resultados con al busqueda
+                   </p>
           <% end %>
+
 
 
 
@@ -412,6 +369,12 @@
   <div class="clearfix filters-container">
     <div class="text-right">
       <div class="pagination-container">
+           <% if !@trucks.nil? %>
+                <%= paginate @trucks %>
+            <% end %>
+
+
+
         <ul class="list-inline list-unstyled">
           <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
           <li><a href="#">1</a></li>

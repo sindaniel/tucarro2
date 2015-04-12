@@ -30,7 +30,7 @@
 
 
 
-    <%= form_for @brand, :url => admin_type_truck_brands_truck_index_path, :method=>'post' do |f|  %>
+    <%= form_for @brand, :url => admin_brands_truck_index_path, :method=>'post' do |f|  %>
 
         <div class="form-group">
           <%= f.label :name, 'Nombre de marca' %>
@@ -38,7 +38,7 @@
         </div>
 
         <%= f.submit 'Guardar', :class=> 'btn btn-info' %>
-        <%=  link_to 'Cancelar', admin_type_truck_brands_truck_index_path, :class=>'btn btn-warning' %>
+        <%=  link_to 'Cancelar', admin_brands_truck_index_path, :class=>'btn btn-warning' %>
     <% end %>
 
 

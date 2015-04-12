@@ -43,8 +43,9 @@
         <tr>
           <th>Nombre</th>
           <th>Precio</th>
-          <th>Marca</th>
           <th>Tipo</th>
+          <th>Marca</th>
+          <th>Departamento</th>
           <th>Acciones</th>
         </tr>
         </thead>
@@ -61,10 +62,15 @@
               </td>
 
               <td>
-                <%=  debug truck.brand_truck %>
-              </td>
-              <td>
                 <%=  truck.type_truck.name %>
+              </td>
+
+              <td>
+                <%=   truck.brand_truck.name %>
+              </td>
+
+              <td>
+                <%=  truck.state.name %>
               </td>
 
 

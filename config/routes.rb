@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'marcas/' => 'pages#getbrands'
 
 
+  get 'camion/:id-:paja' => 'pages#camion', :as =>'camion'
   get 'camiones' => 'pages#camiones'
   get 'camiones/:param1' => 'pages#camiones'
   get 'camiones/:param1/:param2' => 'pages#camiones'
@@ -19,11 +20,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
-    resources :trucks
+    resources :trucks,  :type_truck, :brands_truck
 
-    resources :type_truck do
-      resources :brands_truck
-    end
+
 
     resources :states do
        resources :cities

@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412181220) do
+ActiveRecord::Schema.define(version: 20150412231944) do
 
   create_table "brand_trucks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "type_truck_id"
     t.string   "link_rewrite"
   end
 
@@ -83,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150412181220) do
     t.integer  "state_id"
     t.integer  "city_id"
     t.float    "price",               limit: 24
+    t.string   "link_rewrite"
   end
 
   create_table "type_trucks", force: true do |t|

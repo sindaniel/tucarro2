@@ -301,7 +301,7 @@
 
 
             //cambia el select
-            $('#camion_type').on('click', function(evt){
+            $('#camion_type').on('change', function(evt){
 
 
 
@@ -338,7 +338,7 @@
                         $('#camion_brand').append('<option value="">Todas las marcas</option>')
                         $.each(msg, function(index, value) {
 
-                            $('#camion_brand').append('<option value="'+value.link_rewrite+'">'+value.name+'</option>')
+                            $('#camion_brand').append('<option value="'+value.brand_truck.link_rewrite+'">'+value.brand_truck.name+'</option>')
                         });
 
 
