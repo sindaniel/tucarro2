@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  namespace :admin do
-  get 'brands_truck/index'
-  end
 
+
+
+  devise_for :users
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
-    resource :brands_truck
+    resources :trucks, :brands_truck,  :type_truck
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

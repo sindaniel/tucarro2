@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tu Caminion</title>
+  <title>Tu Camion</title>
   <% #stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <% # javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% #javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
 
   <%= stylesheet_link_tag 'admin/bootstrap.min' %>
   <%= stylesheet_link_tag 'admin/sb-admin' %>
@@ -26,7 +27,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Tu Caminion</a>
+    <a class="navbar-brand" href="index.html">Tu Camion</a>
   </div>
   <!-- Top Menu Items -->
   <ul class="nav navbar-right top-nav">
@@ -139,8 +140,16 @@
       <li>
         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-car"></i> Camiones <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="demo" class="collapse">
+
+
+          <li>
+            <%= link_to 'Camiones', admin_trucks_path %>
+          </li>
           <li>
             <%= link_to 'Marcas', admin_brands_truck_index_path %>
+          </li>
+          <li>
+            <%= link_to 'Tipos', admin_type_truck_index_path %>
           </li>
           <li>
             <a href="#">Dropdown Item</a>
@@ -179,6 +188,9 @@
 <div id="page-wrapper">
 
   <div class="container-fluid">
+
+
+
   <%= yield %>
 <!-- /.container-fluid -->
   </div>
