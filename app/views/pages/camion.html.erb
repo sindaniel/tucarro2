@@ -539,51 +539,61 @@
               </thead>-->
               <tbody>
               <tr class="nymou">
-                <td class="cell-label"><b>Marca Motor</b><br> Sicads</td>
-                <td><b>Marca de la Caja</b><br> Sicads</td>
-                <td><b>Marca de Transmisión</b><br> Sicads</td>
+                <td class="cell-label"><b>Marca Motor</b><br> <%= @truck.marcamotor %></td>
+                <td><b>Marca de la Caja</b><br> <%= @truck.marcacaja %></td>
+                <td><b>Marca de Transmisión</b><br> <%= @truck.marcatransmision %></td>
                 <td><b>Quinta Rueda</b><br> Si</td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Tipo de Cupo</b><br> 80</td>
-                <td><b>Empresa donde esta afiliada</b><br> Cooperativa Trans</td>
-                <td><b>Marca Carpa</b><br> Sicads</td>
-                <td><b>Capacidad de Carga</b><br> 120 Toneladas</td>
+                <td class="cell-label"><b>Tipo de Cupo</b><br> <%= @truck.cupo %></td>
+                <td><b>Empresa donde esta afiliada</b><br> <%= @truck.empresaafiliada %></td>
+                <td><b>Marca Carpa</b><br> <%= @truck.marcacarpa %></td>
+                <td><b>Capacidad de Carga</b><br> <%= @truck.capacidadcarga %> Toneladas</td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Capacidad de Pasajeros</b><br> 20</td>
-                <td><b>Cilindraje CC</b><br> DF554</td>
-                <td><b>Numero de ejes</b><br> 68</td>
-                <td><b>Con Trailer</b><br> No</td>
+                <td class="cell-label"><b>Capacidad de Pasajeros</b><br> <%= @truck.capacidadpasajeros %></td>
+                <td><b>Cilindraje CC</b><br> <%= @truck.cilindrajecc %></td>
+                <td><b>Numero de ejes</b><br> <%= @truck.numeroejes %></td>
+                <td><b>Con Trailer</b><br><% if @truck.trailer == false %>No <% else %> Si <% end %></td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Negociable</b><br> No</td>
+                <td class="cell-label"><b>Negociable</b><br> <% if @truck.negociable == false %>No <% else %> Si <% end %></td>
                 <td><b>Estado Llantas</b><br> Bueno</td>
-                <td><b>Vigias</b><br> Si</td>
-                <td><b>Tipo de Caja</b><br> Mécanica</td>
+                <td><b>Vigias</b><br> <% if @truck.vigia == false %>No <% else %> Si <% end %></td>
+                <td><b>Tipo de Caja</b><br>
+
+                  <% if  @truck.tipodecaja == 0 %>
+                      Automatica
+                  <% else %>
+                        Manual
+                  <% end %>
+
+                </td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Motor Reparado</b><br> Si</td>
-                <td><b>Caja Reparada</b><br> No</td>
+                <td class="cell-label"><b>Motor Reparado</b><br> <% if @truck.motorreparado == false %>No <% else %> Si <% end %></td>
+                <td><b>Caja Reparada</b><br> <% if @truck.cajareparada == false %>No <% else %> Si <% end %></td>
                 <td><b>Transmisión Reparada</b><br> Si</td>
-                <td><b>Frenos ABS</b><br> No</td>
+                <td><b>Frenos ABS</b><br> <% if @truck.frenosabs == false %>No <% else %> Si <% end %></td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Se vende con cupo</b><br> Si</td>
-                <td><b>Sillas reclinables</b><br> No</td>
-                <td><b>Baño</b><br> Si</td>
-                <td><b>Descansa pies</b><br> No</td>
+                <td class="cell-label"><b>Se vende con cupo</b><br> <% if @truck.cupo == false %>No <% else %> Si <% end %></td>
+                <td><b>Sillas reclinables</b><br> <% if @truck.sillareclinable == false %>No <% else %> Si <% end %></td>
+                <td><b>Baño</b><br> <% if @truck.bano == false %>No <% else %> Si <% end %></td>
+                <td><b>Descansa pies</b><br> <% if @truck.descansapies == false %>No <% else %> Si <% end %></td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>TV</b><br> Si</td>
-                <td><b>Pantalla individual</b><br> No</td>
-                <td><b>Wiffi</b><br> Si</td>
-                <td><b>Audio</b><br> No</td>
+                <td class="cell-label"><b>TV</b><br> <% if @truck.tv == false %>No <% else %> Si <% end %></td>
+                <td><b>Pantalla individual</b><br> <% if @truck.pantallaindividual == false %>No <% else %> Si <% end %></td>
+                <td><b>Wifi</b><br> <% if @truck.wifi == false %>No <% else %> Si <% end %></td>
+                <td><b>Audio</b><br> <% if @truck.audio == false %>No <% else %> Si <% end %></td>
               </tr>
               <tr class="nymou">
-                <td class="cell-label"><b>Único dueño</b><br> Si</td>
-                <td><b>Wiffi</b><br> Si</td>
-                <td><b>Audio</b><br> No</td>
+                <td class="cell-label"><b>Único dueño</b><br> <% if @truck.unicodueno == false %>No <% else %> Si <% end %></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
               </tr>
               </tbody>
             </table><!-- /.table .table-bordered -->
