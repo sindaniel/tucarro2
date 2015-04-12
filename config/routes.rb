@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'marcas/' => 'pages#getbrands'
 
 
-
+  get 'camiones' => 'pages#camiones'
   get 'camiones/:param1' => 'pages#camiones'
   get 'camiones/:param1/:param2' => 'pages#camiones'
   get 'camiones/:param1/:param2/:param3' => 'pages#camiones'

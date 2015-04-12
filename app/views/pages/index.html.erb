@@ -268,15 +268,33 @@
         var ready;
         ready = function() {
 
-            $('#btn-camion').click(function(){
+            $(document).on('click', '#btn-camion', function() {
+
 
                 var type = $("#camion_type").val()
                 var brand = $("#camion_brand").val()
                 var state = $("#camion_state").val()
+                var url = 'camiones';
 
-                if(type == '' && brand == '' && state == ''){
-
+                if(state != ''){
+                    url = url+'/'+state
                 }
+
+                if(type != ''){
+                    url = url+'/'+type
+                }
+
+                if(brand != ''){
+                    url = url+'/'+brand
+                }
+
+
+
+
+                window.location.href = url;
+
+
+                return false;
 
             })
 
@@ -286,7 +304,9 @@
             $('#camion_type').on('change', function() {
 
                 $('#camion_brand').html('')
+                console.log($(this).find(':selected').data('id'))
 
+                id = $(this).find(':selected').data('id');
 
                 function loader(data){
                     $('#camion_brand option').html('<option>Cargando...</option>')
@@ -296,8 +316,8 @@
                     alert("Error enviados los datos");
                 };
 
-                if(this.value == " "){
-                    this.value = '0'
+                if(id == undefined){
+                    id = '0'
                 }
 
 
@@ -308,7 +328,7 @@
                     beforeSend:loader,
                     error:error,
                     success: function (msg) {
-
+                        console.log(msg)
 
                         $('#camion_brand').html('')
 
@@ -316,14 +336,14 @@
                         $('#camion_brand').append('<option value="">Todas las marcas</option>')
                         $.each(msg, function(index, value) {
 
-                            $('#camion_brand').append('<option value="'+value.id+'">'+value.name+'</option>')
+                            $('#camion_brand').append('<option value="'+value.link_rewrite+'">'+value.name+'</option>')
                         });
 
 
 
 
                     },
-                    url:"/marcas/"+this.value
+                    url:"/marcas/"+id
                 });
 
 
