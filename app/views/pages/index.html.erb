@@ -255,3 +255,94 @@
 
 </div><!-- /.container -->
 </div><!-- /#top-banner-and-menu -->
+
+
+
+
+
+
+
+<% content_for :footer do %>
+
+    <script>
+        var ready;
+        ready = function() {
+
+            $('#btn-camion').click(function(){
+
+                var type = $("#camion_type").val()
+                var brand = $("#camion_brand").val()
+                var state = $("#camion_state").val()
+
+                if(type == '' && brand == '' && state == ''){
+
+                }
+
+            })
+
+
+
+            //cambia el select
+            $('#camion_type').on('change', function() {
+
+                $('#camion_brand').html('')
+
+
+                function loader(data){
+                    $('#camion_brand option').html('<option>Cargando...</option>')
+                };
+
+                function error(data){
+                    alert("Error enviados los datos");
+                };
+
+                if(this.value == " "){
+                    this.value = '0'
+                }
+
+
+                $.ajax({
+                    async: true,
+                    type: "GET",
+                    dataType: 'json',
+                    beforeSend:loader,
+                    error:error,
+                    success: function (msg) {
+
+
+                        $('#camion_brand').html('')
+
+
+                        $('#camion_brand').append('<option value="">Todas las marcas</option>')
+                        $.each(msg, function(index, value) {
+
+                            $('#camion_brand').append('<option value="'+value.id+'">'+value.name+'</option>')
+                        });
+
+
+
+
+                    },
+                    url:"/marcas/"+this.value
+                });
+
+
+
+
+
+            });
+
+        };
+
+        $(document).ready(ready);
+        $(document).on('page:load', ready);
+
+
+    </script>
+
+
+
+<% end %>
+
+
+

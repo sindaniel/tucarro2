@@ -4,6 +4,16 @@ Rails.application.routes.draw do
 
 
   root 'pages#index'
+  get 'marcas/:id' => 'pages#getbrands'
+  get 'marcas/' => 'pages#getbrands'
+
+
+
+  get 'camiones/:param1' => 'pages#camiones'
+  get 'camiones/:param1/:param2' => 'pages#camiones'
+  get 'camiones/:param1/:param2/:param3' => 'pages#camiones'
+
+
 
   devise_for :users
 
