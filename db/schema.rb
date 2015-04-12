@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412135751) do
+ActiveRecord::Schema.define(version: 20150412144305) do
 
   create_table "brand_trucks", force: true do |t|
     t.datetime "created_at"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150412135751) do
     t.datetime "updated_at"
     t.integer  "state_id"
     t.integer  "city_id"
+    t.float    "price",               limit: 24
   end
 
   create_table "type_trucks", force: true do |t|

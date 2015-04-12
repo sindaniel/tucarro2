@@ -27,7 +27,7 @@
 <div class="row">
   <div class="col-md-12">
     <p>
-      <%= link_to 'Nuevo Caminion', new_admin_truck_path,:method=>'get', :class=>'btn  btn-primary' %>
+      <%= link_to 'Nuevo Camion', new_admin_truck_path,:method=>'get', :class=>'btn  btn-primary' %>
     </p>
   </div>
 </div>
@@ -42,6 +42,9 @@
         <thead>
         <tr>
           <th>Nombre</th>
+          <th>Precio</th>
+          <th>Marca</th>
+          <th>Tipo</th>
           <th>Acciones</th>
         </tr>
         </thead>
@@ -53,6 +56,18 @@
               <td>
                 <%= truck.nombre %>
               </td>
+              <td>
+                <%= number_to_currency( truck.price) %>
+              </td>
+
+              <td>
+                <%=  truck.brand_truck.name %>
+              </td>
+              <td>
+                <%=  truck.type_truck.name %>
+              </td>
+
+
               <td>
                 <%= link_to 'Editar', edit_admin_truck_path(truck.id), :class=>'btn btn-info' %>
                 <%= link_to 'Eliminar', {:controller => 'admin/trucks', :action => 'destroy', :id => truck.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>

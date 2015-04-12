@@ -7,7 +7,13 @@ class Truck < ActiveRecord::Base
 
 
   HUMANIZED_ATTRIBUTES = {
-      :nombre => 'Nombre'
+      :nombre => 'Nombre',
+      :city_id => 'Ciudad',
+      :state_id => 'Departamento',
+      :brand_truck => 'Marca',
+      :type_truck => 'Tipo'
+
+
   }
 
 
@@ -22,6 +28,8 @@ class Truck < ActiveRecord::Base
   validates :nombre, presence: true
   validates :state_id, presence: true
   validates :city_id, presence: true
+  validates :brand_truck, presence: true
+  validates :type_truck, presence: true
 
 
 end
