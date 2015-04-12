@@ -12,8 +12,6 @@ class Truck < ActiveRecord::Base
       :state_id => 'Departamento',
       :brand_truck => 'Marca',
       :type_truck => 'Tipo'
-
-
   }
 
 

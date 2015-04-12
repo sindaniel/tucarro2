@@ -1,6 +1,7 @@
 class BrandTruck < ActiveRecord::Base
   has_many :trucks
 
+
   HUMANIZED_ATTRIBUTES = {
       :name => 'Nombre'
   }
