@@ -9,11 +9,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
-    resources :trucks, :brands_truck,  :type_truck
+    resources :trucks
+
+    resources :type_truck do
+      resources :brands_truck
+    end
 
     resources :states do
        resources :cities
-     end
+    end
 
 
   end

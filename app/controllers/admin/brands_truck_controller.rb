@@ -1,23 +1,33 @@
 class Admin::BrandsTruckController < ApplicationController
   before_action :authenticate_user!
   layout  'admin/layouts/application'
-  add_breadcrumb 'Marcas', :admin_brands_truck_index_path, :options => { :title =>'Inicio' }
+  add_breadcrumb 'Tipos de camion', :admin_type_truck_index_path, :options => { :title =>'Inicio' }
+
   def index
-    @brands = BrandTruck.all
+    @type = TypeTruck.find_by_id(params[:type_truck_id])
+    @brands = BrandTruck.where(type_truck_id: params[:type_truck_id]).all
+
+    add_breadcrumb @type.name, :admin_type_truck_brands_truck_index_path, :options => { :title =>'Inicio' }
   end
 
 
   def new
-    @brand = BrandTruck.new
+
+
+
+    @type = TypeTruck.find_by_id(params[:type_truck_id])
+    @brand = BrandTruck.new(:type_truck_id => @type )
+    add_breadcrumb @type.name, :admin_type_truck_brands_truck_index_path, :options => { :title =>'Inicio' }
     add_breadcrumb 'Agregar'
   end
 
   def create
 
     @brand = BrandTruck.new(allowed_params)
+    @brand.type_truck_id = params[:type_truck_id]
     if @brand.save
       flash[:notice] = 'Información agregada correctamente'
-      redirect_to admin_brands_truck_index_path
+      redirect_to admin_type_truck_brands_truck_index_path
     else
       render 'new'
     end
@@ -26,7 +36,10 @@ class Admin::BrandsTruckController < ApplicationController
   end
 
   def edit
+    @type = TypeTruck.find_by_id(params[:type_truck_id])
     @brand = BrandTruck.find(params[:id])
+    add_breadcrumb @type.name, :admin_type_truck_brands_truck_index_path, :options => { :title =>'Inicio' }
+    add_breadcrumb 'Editar'
   end
 
   def update
@@ -35,7 +48,7 @@ class Admin::BrandsTruckController < ApplicationController
 
     if @brand.update_attributes(allowed_params)
       flash[:notice] = 'Información actualizada correctamente'
-      redirect_to admin_brands_truck_index_path
+      redirect_to admin_type_truck_brands_truck_index_path
     else
       render 'new'
     end
@@ -48,7 +61,7 @@ class Admin::BrandsTruckController < ApplicationController
     @brand = BrandTruck.find(params[:id])
     if @brand.destroy
       flash[:notice] = 'Información eliminada correctamente'
-      redirect_to admin_brands_truck_index_path
+      redirect_to admin_type_truck_brands_truck_index_path
     else
       render 'new'
     end

@@ -54,8 +54,9 @@
                 <%= type.name %>
               </td>
               <td>
+                <%= link_to 'Agregar Marcas', admin_type_truck_brands_truck_index_path(type.id), :class=>'btn btn-success' %>
                 <%= link_to 'Editar', edit_admin_type_truck_path(type.id), :class=>'btn btn-info' %>
-                <%= link_to 'Eliminar', {:controller => 'admin/brands_truck', :action => 'destroy', :id => type.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>
+                <%= link_to 'Eliminar', {:controller => 'admin/type_truck', :action => 'destroy', :id => type.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>
               </td>
             </tr>
         <% end %>

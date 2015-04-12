@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">
-      Marcas <small>Camiones</small>
+      Marcas <small><%= @type.name %></small>
     </h1>
     <%= render 'admin/includes/top' %>
   </div>
@@ -27,7 +27,7 @@
 <div class="row">
     <div class="col-md-12">
     <p>
-      <%= link_to 'Nueva Marca', new_admin_brands_truck_path,:method=>'get', :class=>'btn  btn-primary' %>
+      <%= link_to 'Nueva Marca', new_admin_type_truck_brands_truck_path,:method=>'get', :class=>'btn  btn-primary' %>
     </p>
     </div>
 </div>
@@ -54,7 +54,7 @@
                     <%= brand.name %>
                   </td>
                   <td>
-                    <%= link_to 'Editar', edit_admin_brands_truck_path(brand.id), :class=>'btn btn-info' %>
+                    <%=  link_to 'Editar', edit_admin_type_truck_brands_truck_path(brand.type_truck_id, brand.id), :class=>'btn btn-info' %>
                     <%= link_to 'Eliminar', {:controller => 'admin/brands_truck', :action => 'destroy', :id => brand.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>
                   </td>
                 </tr>
