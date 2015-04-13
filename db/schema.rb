@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413141641) do
+ActiveRecord::Schema.define(version: 20150413160458) do
 
   create_table "brand_extras", force: true do |t|
     t.string   "name"
@@ -150,6 +150,13 @@ ActiveRecord::Schema.define(version: 20150413141641) do
   end
 
   create_table "type_extras", force: true do |t|
+    t.string   "name"
+    t.string   "link_rewrite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "type_services", force: true do |t|
     t.string   "name"
     t.string   "link_rewrite"
     t.datetime "created_at"

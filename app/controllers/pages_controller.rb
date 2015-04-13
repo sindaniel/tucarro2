@@ -48,7 +48,7 @@ class PagesController < ApplicationController
   end
 
   def repuesto
-
+    @extra = Extra.find_by_id(params[:id])
   end
 
 
