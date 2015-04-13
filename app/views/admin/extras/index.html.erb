@@ -47,6 +47,7 @@
           <th>Marca</th>
            <th>Departamento</th>
           <th>Acciones</th>
+          <th>Estado</th>
         </tr>
         </thead>
         <tbody>
@@ -80,6 +81,25 @@
               <td>
                 <%= link_to 'Editar', edit_admin_extra_path(extra.id), :class=>'btn btn-info' %>
                 <%= link_to 'Eliminar', {:controller => 'extras', :action => 'destroy', :id => extra.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>
+              </td>
+
+              <td>
+                <% if extra.active == 1 %>
+
+
+                    <%= link_to admin_updateState_path(extra.id,1,'extra'), :class=>'btn btn-success' do %>
+                        <i class="fa fa-check"></i>
+                    <% end %>
+
+
+                <% else %>
+
+                    <%= link_to admin_updateState_path(extra.id,0,'extra'), :class=>'btn btn-danger' do %>
+                        <i class="fa fa-times"></i>
+                    <% end %>
+
+
+                <% end %>
               </td>
             </tr>
         <% end %>

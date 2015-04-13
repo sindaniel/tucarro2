@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413190520) do
+ActiveRecord::Schema.define(version: 20150413194141) do
 
   create_table "brand_extras", force: true do |t|
     t.string   "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150413190520) do
     t.integer  "picture5_file_size"
     t.datetime "picture5_updated_at"
     t.integer  "type_truck_id"
+    t.integer  "active",                           default: 1
   end
 
   create_table "services", force: true do |t|
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150413190520) do
     t.integer  "type_service_id"
     t.string   "horario"
     t.string   "address"
-    t.boolean  "state",                 default: true
+    t.integer  "active",                default: 1
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -182,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150413190520) do
     t.integer  "picture5_file_size"
     t.datetime "picture5_updated_at"
     t.text     "descripccion"
+    t.integer  "active",                           default: 1
   end
 
   create_table "type_extras", force: true do |t|

@@ -71,7 +71,7 @@
               </td>
 
               <td>
-                <% if type.state %>
+                <% if type.active == 1 %>
 
 
                     <%= link_to admin_updateState_path(type.id,1,'service'), :class=>'btn btn-success' do %>

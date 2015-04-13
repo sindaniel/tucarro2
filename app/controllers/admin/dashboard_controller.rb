@@ -13,9 +13,9 @@ class Admin::DashboardController < ApplicationController
     if(params[:type] == 'service')
       @item = Service.find(params[:iditem])
       if(params[:idstate] == '0')
-        @item.state = 1
+        @item.active = 1
       else
-        @item.state = 0
+        @item.active = 0
       end
       if @item.save
         redirect_to admin_services_path
@@ -27,12 +27,12 @@ class Admin::DashboardController < ApplicationController
     if(params[:type] == 'truck')
       @item = Truck.find(params[:iditem])
       if(params[:idstate] == '0')
-        @item.state = 1
+        @item.active = 1
       else
-        @item.state = 0
+        @item.active = 0
       end
       if @item.save
-        redirect_to admin_truck_path
+        redirect_to admin_trucks_path
       end
     end
 
@@ -41,9 +41,9 @@ class Admin::DashboardController < ApplicationController
     if(params[:type] == 'extra')
       @item = Extra.find(params[:iditem])
       if(params[:idstate] == '0')
-        @item.state = 1
+        @item.active = 1
       else
-        @item.state = 0
+        @item.active = 0
       end
       if @item.save
         redirect_to admin_extras_path

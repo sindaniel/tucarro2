@@ -58,7 +58,7 @@ class PagesController < ApplicationController
 
 
     if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
-      @extras = Extra.all.page(params[:page])
+      @extras = Extra.all.where(active: 1).page(params[:page])
     end
 
 
@@ -68,19 +68,19 @@ class PagesController < ApplicationController
 
       if TypeTruck.where(link_rewrite: params[:param1]).exists?
         types = TypeTruck.find_by_link_rewrite(params[:param1])
-        @extras = Extra.where(type_truck_id: types.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: types.id, active: 1).all.page(params[:page])
       end
 
 
       if BrandExtra.where(link_rewrite: params[:param1]).exists?
         brand = BrandExtra.find_by_link_rewrite(params[:param1])
-        @extras = Extra.where(brand_extra_id: brand.id).all.page(params[:page])
+        @extras = Extra.where(brand_extra_id: brand.id, active: 1).all.page(params[:page])
       end
 
 
       if State.where(link_rewrite: params[:param1]).exists?
         state = State.find_by_link_rewrite(params[:param1])
-        @extras = Extra.where(state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(state_id: state.id, active: 1).all.page(params[:page])
       end
 
     end
@@ -129,40 +129,40 @@ class PagesController < ApplicationController
       if @p1 == 'type' &&  @p2 == 'brand'
         type = TypeTruck.find_by_link_rewrite(params[:param1])
         brand = BrandExtra.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'brand' &&  @p2 == 'type'
         brand = BrandExtra.find_by_link_rewrite(params[:param1])
         type = TypeTruck.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id, active: 1).all.page(params[:page])
       end
 
       if @p1 == 'type' &&  @p2 == 'state'
         type = TypeTruck.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'state' &&  @p2 == 'type'
         state = State.find_by_link_rewrite(params[:param1])
         type = TypeTruck.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
       if @p1 == 'state' &&  @p2 == 'brand'
         state = State.find_by_link_rewrite(params[:param1])
         brand = BrandExtra.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'brand' &&  @p2 == 'state'
         brand = BrandExtra.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
@@ -182,7 +182,7 @@ class PagesController < ApplicationController
       brand = BrandExtra.find_by_link_rewrite(params[:param3])
 
       if !brand.nil? && !state.nil? && !type.nil?
-        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, type_truck_id: type.id).all.page(params[:page])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, type_truck_id: type.id, active: 1).all.page(params[:page])
       end
 
 
@@ -205,7 +205,7 @@ class PagesController < ApplicationController
 
 
     if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
-      @trucks = Truck.all.page(params[:page])
+      @trucks = Truck.all.where(active: 1).page(params[:page])
     end
 
 
@@ -214,19 +214,19 @@ class PagesController < ApplicationController
 
         if TypeTruck.where(link_rewrite: params[:param1]).exists?
           types = TypeTruck.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(type_truck_id: types.id).all.page(params[:page])
+          @trucks = Truck.where(type_truck_id: types.id, active: 1).all.page(params[:page])
         end
 
 
         if BrandTruck.where(link_rewrite: params[:param1]).exists?
           brand = BrandTruck.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(brand_truck_id: brand.id).all.page(params[:page])
+          @trucks = Truck.where(brand_truck_id: brand.id, active: 1).all.page(params[:page])
         end
 
 
         if State.where(link_rewrite: params[:param1]).exists?
           state = State.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(state_id: state.id).all.page(params[:page])
+          @trucks = Truck.where(state_id: state.id, active: 1).all.page(params[:page])
         end
 
     end
@@ -274,40 +274,40 @@ class PagesController < ApplicationController
       if @p1 == 'type' &&  @p2 == 'brand'
         type = TypeTruck.find_by_link_rewrite(params[:param1])
         brand = BrandTruck.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(type_truck_id: type.id, brand_truck_id: brand.id).all.page(params[:page])
+        @trucks = Truck.where(type_truck_id: type.id, brand_truck_id: brand.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'brand' &&  @p2 == 'type'
         brand = BrandTruck.find_by_link_rewrite(params[:param1])
         type = TypeTruck.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(type_truck_id: type.id, brand_truck_id: brand.id).all.page(params[:page])
+        @trucks = Truck.where(type_truck_id: type.id, brand_truck_id: brand.id, active: 1).all.page(params[:page])
       end
 
       if @p1 == 'type' &&  @p2 == 'state'
         type = TypeTruck.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
+        @trucks = Truck.where(type_truck_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'state' &&  @p2 == 'type'
         state = State.find_by_link_rewrite(params[:param1])
         type = TypeTruck.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
+        @trucks = Truck.where(type_truck_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
       if @p1 == 'state' &&  @p2 == 'brand'
         state = State.find_by_link_rewrite(params[:param1])
         brand = BrandTruck.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id).all.page(params[:page])
+        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
       if @p1 == 'brand' &&  @p2 == 'state'
         brand = BrandTruck.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id).all.page(params[:page])
+        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
@@ -323,7 +323,7 @@ class PagesController < ApplicationController
       type = TypeTruck.find_by_link_rewrite(params[:param2])
 
       if !brand.nil? && !state.nil? && !type.nil?
-        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id, type_truck_id: type.id).all.page(params[:page])
+        @trucks = Truck.where(brand_truck_id: brand.id, state_id: state.id, type_truck_id: type.id, active: 1).all.page(params[:page])
       end
 
 
@@ -349,7 +349,7 @@ class PagesController < ApplicationController
 
     if(params[:param1].nil? && params[:param2].nil?)
       #@extras = Service.where(:state, true).all.page(params[:page])
-      @services = Service.all.page(params[:page])
+      @services = Service.all.where(active: 1).page(params[:page])
     end
 
 
@@ -360,13 +360,13 @@ class PagesController < ApplicationController
 
       if TypeService.where(link_rewrite: params[:param1]).exists?
         types = TypeService.find_by_link_rewrite(params[:param1])
-        @services = Service.where(type_service_id: types.id).all.page(params[:page])
+        @services = Service.where(type_service_id: types.id, active: 1).all.page(params[:page])
       end
 
 
       if State.where(link_rewrite: params[:param1]).exists?
         state = State.find_by_link_rewrite(params[:param1])
-        @services = Service.where(state_id: state.id).all.page(params[:page])
+        @services = Service.where(state_id: state.id, active: 1).all.page(params[:page])
       end
 
     end
@@ -407,7 +407,7 @@ class PagesController < ApplicationController
 
         type = TypeService.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @services = Service.where(type_service_id: type.id, state_id: state.id).all.page(params[:page])
+        @services = Service.where(type_service_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
@@ -415,7 +415,7 @@ class PagesController < ApplicationController
 
         type = TypeService.find_by_link_rewrite(params[:param2])
         state = State.find_by_link_rewrite(params[:param1])
-        @services = Service.where(type_service_id: type.id, state_id: state.id).all.page(params[:page])
+        @services = Service.where(type_service_id: type.id, state_id: state.id, active: 1).all.page(params[:page])
       end
 
 
