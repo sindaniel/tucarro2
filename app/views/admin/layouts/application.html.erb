@@ -5,6 +5,9 @@
   <% #stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <% javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'admin/js/jquery' %>
+  <%= javascript_include_tag 'admin/js/bootstrap.min' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'admin/bootstrap.min' %>
   <%= stylesheet_link_tag 'admin/sb-admin' %>
@@ -223,9 +226,7 @@
 </div>
 
 
-<%= javascript_include_tag 'admin/js/jquery' %>
-<%= javascript_include_tag 'admin/js/bootstrap.min' %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 </body>
 </html>
 
