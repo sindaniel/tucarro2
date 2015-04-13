@@ -318,59 +318,48 @@
     <div class="product-item-holder size-big single-product-gallery small-gallery">
 
       <div id="owl-single-product">
+
+
+        <% if @truck.picture2.to_s  != '/images/missing.png' %>
         <div class="single-product-gallery-item" id="slide1">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
+          <a data-lightbox="image-1" data-title="Gallery" href="<%= image_path( @truck.picture2(:home ))  %>">
+            <%= image_tag @truck.picture2(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture2(:home ))  %>
           </a>
-        </div><!-- /.single-product-gallery-item -->
+        </div>
+         <% end %>
 
-        <div class="single-product-gallery-item" id="slide2">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
 
-        <div class="single-product-gallery-item" id="slide3">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
 
-        <div class="single-product-gallery-item" id="slide4">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
+        <% if @truck.picture3.to_s  != '/images/missing.png' %>
+            <div class="single-product-gallery-item" id="slide2">
+              <a data-lightbox="image-2" data-title="Gallery" href="<%= image_path( @truck.picture3(:home ))  %>">
+                <%= image_tag @truck.picture3(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture3(:home ))  %>
+              </a>
+            </div>
+        <% end %>
 
-        <div class="single-product-gallery-item" id="slide5">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
 
-        <div class="single-product-gallery-item" id="slide6">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
+        <% if @truck.picture4.to_s  != '/images/missing.png' %>
+            <div class="single-product-gallery-item" id="slide3">
+              <a data-lightbox="image-3" data-title="Gallery" href="<%= image_path( @truck.picture4(:home ))  %>">
+                <%= image_tag @truck.picture4(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture4(:home ))  %>
+              </a>
+            </div>
+        <% end %>
 
-        <div class="single-product-gallery-item" id="slide7">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
 
-        <div class="single-product-gallery-item" id="slide8">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
 
-        <div class="single-product-gallery-item" id="slide9">
-          <a data-lightbox="image-1" data-title="Gallery" href="assets/images/fashion-products/d1.jpg">
-            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d1.jpg" />
-          </a>
-        </div><!-- /.single-product-gallery-item -->
+        <% if @truck.picture5.to_s  != '/images/missing.png' %>
+            <div class="single-product-gallery-item" id="slide4">
+              <a data-lightbox="image-4" data-title="Gallery" href="<%= image_path( @truck.picture5(:home ))  %>">
+                <%= image_tag @truck.picture5(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture5(:home ))  %>
+              </a>
+            </div>
+        <% end %>
+
+
+
+
 
       </div><!-- /.single-product-slider -->
 
@@ -378,59 +367,52 @@
       <div class="single-product-gallery-thumbs second-gallery-thumb gallery-thumbs">
 
         <div id="owl-single-product2-thumbnails">
+
+          <% if @truck.picture2.to_s  != '/images/missing.png' %>
           <div class="item">
             <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="0" href="#slide1">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d2.jpg" />
-            </a>
-          </div>
-          <div class="item">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide2">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d3.jpg"/>
+              <%= image_tag @truck.picture2(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture2(:home ))  %>
             </a>
           </div>
-          <div class="item">
+          <% end %>
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide3">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d4.jpg" />
-            </a>
-          </div>
-          <div class="item">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide4">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d5.jpg" />
-            </a>
-          </div>
-          <div class="item">
+          <% if @truck.picture3.to_s  != '/images/missing.png' %>
+              <div class="item">
+                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide2">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide5">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d2.jpg" />
-            </a>
-          </div>
-          <div class="item">
+                  <%= image_tag @truck.picture3(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture3(:home ))  %>
+                </a>
+              </div>
+          <% end %>
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide6">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d5.jpg" />
-            </a>
-          </div>
-          <div class="item">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="0" href="#slide7">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d4.jpg" />
-            </a>
-          </div>
-          <div class="item">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="1" href="#slide8">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d3.jpg" />
-            </a>
-          </div>
-          <div class="item">
+          <% if @truck.picture4.to_s  != '/images/missing.png' %>
+              <div class="item">
+                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="2" href="#slide3">
 
-            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide9">
-              <img class="img-responsive" width="85" alt="" src="assets/images/blank.gif" data-echo="assets/images/fashion-products/d5.jpg" />
-            </a>
-          </div>
+                  <%= image_tag @truck.picture4(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture4(:home ))  %>
+                </a>
+              </div>
+          <% end %>
+
+
+
+          <% if @truck.picture5.to_s  != '/images/missing.png' %>
+              <div class="item">
+                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="3" href="#slide4">
+
+                  <%= image_tag @truck.picture5(:home ), :class=>'img-responsive', 'data-echo'=>image_path( @truck.picture5(:home ))  %>
+                </a>
+              </div>
+          <% end %>
+
+
+
+
+
 
         </div><!-- /#owl-single-product-thumbnails -->
 
@@ -522,9 +504,9 @@
     <div id="detalles" class="tab-pane in active">
       <div class="product-tab" style="height: auto !important; background-color: transparent; margin-top:-50px;">
         <div class="review-table">
-          <p><h3>Descripción General</h3>
-          Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
-          </p>
+         <h3>Descripción General</h3>
+          <p>  <%= @truck.descripccion %></p>
+
           <div class="table-responsive">
             <table class="table table-bordered">
               <!--<thead>

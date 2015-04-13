@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412231944) do
+ActiveRecord::Schema.define(version: 20150413141641) do
+
+  create_table "brand_extras", force: true do |t|
+    t.string   "name"
+    t.string   "link_rewrite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "brand_trucks", force: true do |t|
     t.datetime "created_at"
@@ -26,6 +33,42 @@ ActiveRecord::Schema.define(version: 20150412231944) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link_rewrite"
+  end
+
+  create_table "extras", force: true do |t|
+    t.string   "name"
+    t.float    "price",                 limit: 24
+    t.string   "address"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.string   "phone"
+    t.string   "horario"
+    t.text     "description"
+    t.integer  "type_extra_id"
+    t.integer  "brand_extra_id"
+    t.string   "link_rewrite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture1_file_name"
+    t.string   "picture1_content_type"
+    t.integer  "picture1_file_size"
+    t.datetime "picture1_updated_at"
+    t.string   "picture2_file_name"
+    t.string   "picture2_content_type"
+    t.integer  "picture2_file_size"
+    t.datetime "picture2_updated_at"
+    t.string   "picture3_file_name"
+    t.string   "picture3_content_type"
+    t.integer  "picture3_file_size"
+    t.datetime "picture3_updated_at"
+    t.string   "picture4_file_name"
+    t.string   "picture4_content_type"
+    t.integer  "picture4_file_size"
+    t.datetime "picture4_updated_at"
+    t.string   "picture5_file_name"
+    t.string   "picture5_content_type"
+    t.integer  "picture5_file_size"
+    t.datetime "picture5_updated_at"
   end
 
   create_table "states", force: true do |t|
@@ -81,8 +124,36 @@ ActiveRecord::Schema.define(version: 20150412231944) do
     t.datetime "updated_at"
     t.integer  "state_id"
     t.integer  "city_id"
-    t.float    "price",               limit: 24
+    t.float    "price",                 limit: 24
     t.string   "link_rewrite"
+    t.string   "picture1_file_name"
+    t.string   "picture1_content_type"
+    t.integer  "picture1_file_size"
+    t.datetime "picture1_updated_at"
+    t.string   "picture2_file_name"
+    t.string   "picture2_content_type"
+    t.integer  "picture2_file_size"
+    t.datetime "picture2_updated_at"
+    t.string   "picture3_file_name"
+    t.string   "picture3_content_type"
+    t.integer  "picture3_file_size"
+    t.datetime "picture3_updated_at"
+    t.string   "picture4_file_name"
+    t.string   "picture4_content_type"
+    t.integer  "picture4_file_size"
+    t.datetime "picture4_updated_at"
+    t.string   "picture5_file_name"
+    t.string   "picture5_content_type"
+    t.integer  "picture5_file_size"
+    t.datetime "picture5_updated_at"
+    t.text     "descripccion"
+  end
+
+  create_table "type_extras", force: true do |t|
+    t.string   "name"
+    t.string   "link_rewrite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "type_trucks", force: true do |t|

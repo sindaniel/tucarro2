@@ -2,6 +2,8 @@ class State < ActiveRecord::Base
   has_many :city
   has_many :trucks
 
+  default_scope { order("name ASC") }
+
   HUMANIZED_ATTRIBUTES = {
       :name => 'Nombre'
   }

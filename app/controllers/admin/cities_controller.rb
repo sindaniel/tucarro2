@@ -6,7 +6,7 @@ class Admin::CitiesController < ApplicationController
 
 
   def index
-    @cities = City.where(state_id: params[:state_id]).all
+    @cities = City.where(state_id: params[:state_id]).order(:name).all
     @state = State.find_by_id(params[:state_id])
     add_breadcrumb @state.name
 

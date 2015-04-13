@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
 
 
-
-
   root 'pages#index'
   get 'marcas/:id' => 'pages#getbrands'
   get 'marcas/' => 'pages#getbrands'
 
 
-  get 'camion/:id-:paja' => 'pages#camion', :as =>'camion'
+  get 'marcasrespuestos/:id' => 'pages#getbrandsextra'
+  get 'marcasrespuestos/' => 'pages#getbrandsextra'
+
+
+
+
+
+
+  get 'camion/:id-:link' => 'pages#camion', :as =>'camion'
   get 'camiones' => 'pages#camiones'
   get 'camiones/:param1' => 'pages#camiones'
   get 'camiones/:param1/:param2' => 'pages#camiones'
@@ -16,11 +22,19 @@ Rails.application.routes.draw do
 
 
 
+  get 'repuesto/:id-:link' => 'pages#repuesto', :as =>'repuesto'
+  get 'repuestos' => 'pages#repuestos'
+  get 'repuestos/:param1' => 'pages#repuestos'
+  get 'repuestos/:param1/:param2' => 'pages#repuestos'
+  get 'repuestos/:param1/:param2/:param3' => 'pages#repuestos'
+
+
+
   devise_for :users
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
-    resources :trucks,  :type_truck, :brands_truck
+    resources :trucks,  :type_truck, :brands_truck, :brand_extra, :type_extra, :extras
 
 
 

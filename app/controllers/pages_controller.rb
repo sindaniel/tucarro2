@@ -3,28 +3,98 @@ class PagesController < ApplicationController
   def index
 
     @types = TypeTruck.all
+    @typesExtra = TypeExtra.all
   end
 
 
   def getbrands
 
     if params[:id] == '0'
+      #@brands = BrandTruck.all
+      #render json: @brands
+
       @brands = BrandTruck.all
+      render json: @brands
+
     else
-      @brands = Truck.where(type_truck_id: params[:id])
+      @brands = Truck.where(type_truck_id: params[:id]).group(:type_truck_id)
+      render json: @brands, :include =>[:brand_truck]
       #@brands = BrandTruck.where(type_truck_id: params[:id]).all
     end
 
 
-    render json: @brands, :include =>[:brand_truck]
+
   end
+
+
+
+  def getbrandsextra
+
+    if params[:id] == '0'
+      #@brands = BrandTruck.all
+      #render json: @brands
+
+      @brands = BrandExtra.all
+      render json: @brands
+
+    else
+      @brands = Extra.where(type_extra_id: params[:id]).group(:type_extra_id)
+      render json: @brands, :include =>[:brand_extra]
+      #@brands = BrandTruck.where(type_truck_id: params[:id]).all
+    end
+
+
+
+  end
+
+  def repuesto
+
+  end
+
+
+
+
+  def repuestos
+
+
+    if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
+      @extras = Extra.all.page(params[:page])
+    end
+
+
+
+    #busqueda de un parametro
+    if(!params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
+
+      if TypeExtra.where(link_rewrite: params[:param1]).exists?
+        types = TypeExtra.find_by_link_rewrite(params[:param1])
+        @extras = Extra.where(type_extra_id: types.id).all.page(params[:page])
+      end
+
+
+      if BrandExtra.where(link_rewrite: params[:param1]).exists?
+        brand = BrandExtra.find_by_link_rewrite(params[:param1])
+        @extras = Extra.where(brand_extra_id: brand.id).all.page(params[:page])
+      end
+
+
+      if State.where(link_rewrite: params[:param1]).exists?
+        state = State.find_by_link_rewrite(params[:param1])
+        @extras = Extra.where(state_id: state.id).all.page(params[:page])
+      end
+
+    end
+
+  end
+
+
 
 
 
   def camiones
 
-    @types = TypeTruck.all
-    @p = params
+    #@types = TypeTruck.all
+    #@p = params
 
 
     if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)

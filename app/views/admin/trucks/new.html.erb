@@ -267,6 +267,17 @@
 
 
       <div class="row">
+        <div class="col-md-12">
+          <%= f.label :descripccion, 'Descripccion' %>
+          <%= f.text_area :descripccion, :class =>'form-control'  %> <br/> <br/> <br/> <br/>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row">
         <div class="col-md-3">
           <div class="form-group">
             <label>
@@ -343,7 +354,50 @@
         </div>
       </div>
 
-        <%= f.submit 'Guardar', :class=> 'btn btn-info' %>
+
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :picture1, 'Imagen 1' %>
+            <%= f.file_field :picture1, :class =>'form-control'  %>
+
+
+
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :picture2, 'Imagen 2' %>
+            <%= f.file_field :picture2, :class =>'form-control'  %>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :picture3, 'Imagen 3' %>
+            <%= f.file_field :picture3, :class =>'form-control'  %>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :picture4, 'Imagen 4' %>
+            <%= f.file_field :picture4, :class =>'form-control'  %>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :picture5, 'Imagen 5' %>
+            <%= f.file_field :picture5, :class =>'form-control'  %>
+          </div>
+        </div>
+      </div>
+
+
+      <%= f.submit 'Guardar', :class=> 'btn btn-info' %>
         <%=  link_to 'Cancelar', admin_trucks_path, :class=>'btn btn-warning' %>
     <% end %>
 

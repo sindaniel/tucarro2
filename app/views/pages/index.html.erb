@@ -287,20 +287,14 @@
                 if(brand != ''){
                     url = url+'/'+brand
                 }
-
-
-
-
                 window.location.href = url;
-
-
                 return false;
 
             })
 
 
 
-            //cambia el select
+            //cambia el select camiones
             $('#camion_type').on('change', function(evt){
 
 
@@ -334,12 +328,26 @@
 
                         $('#camion_brand').html('')
 
+                        if(id == '0'){
+                            $('#camion_brand').append('<option value="">Todas las marcas</option>')
 
-                        $('#camion_brand').append('<option value="">Todas las marcas</option>')
-                        $.each(msg, function(index, value) {
 
-                            $('#camion_brand').append('<option value="'+value.brand_truck.link_rewrite+'">'+value.brand_truck.name+'</option>')
-                        });
+                            $.each(msg, function(index, value) {
+                                $('#camion_brand').append('<option value="'+value.link_rewrite+'">'+value.name+'</option>')
+                            });
+
+
+                        } else{
+
+
+                            $('#camion_brand').append('<option value="">Todas las marcas</option>')
+                            $.each(msg, function(index, value) {
+                                $('#camion_brand').append('<option value="'+value.brand_truck.link_rewrite+'">'+value.brand_truck.name+'</option>')
+                            });
+
+
+                        }
+
 
 
 
@@ -353,6 +361,108 @@
 
 
             });
+
+
+
+
+
+            //cambia el select repuesto
+            $('#servicio_type').on('change', function(evt){
+
+
+
+                $('#servicio_brand').html('')
+                console.log($(this).find(':selected').data('id'))
+
+                id = $(this).find(':selected').data('id');
+
+                function loader(data){
+                    $('#servicio_brand option').html('<option>Cargando...</option>')
+                };
+
+                function error(data){
+                    alert("Error enviados los datos");
+                };
+
+                if(id == undefined){
+                    id = '0'
+                }
+
+
+                $.ajax({
+                    async: true,
+                    type: "GET",
+                    dataType: 'json',
+                    beforeSend:loader,
+                    error:error,
+                    success: function (msg) {
+                        console.log(msg)
+
+                        $('#servicio_brand').html('')
+
+
+                        if(id == '0'){
+                            $('#servicio_brand').append('<option value="">Todas las marcas</option>')
+
+
+                            $.each(msg, function(index, value) {
+                                $('#servicio_brand').append('<option value="'+value.link_rewrite+'">'+value.name+'</option>')
+                            });
+
+                        } else{
+
+                            $('#servicio_brand').append('<option value="">Todas las marcas</option>')
+                            $.each(msg, function(index, value) {
+                                $('#servicio_brand').append('<option value="'+value.brand_extra.link_rewrite+'">'+value.brand_extra.name+'</option>')
+                            });
+
+
+                        }
+
+                    },
+                    url:"/marcasrespuestos/"+id
+                });
+
+            });
+
+
+
+
+
+
+            $(document).on('click', '#btn-repuesto', function() {
+
+
+                var type = $("#servicio_type").val()
+                var brand = $("#servicio_brand").val()
+                var state = $("#servicio_state").val()
+                var url = 'repuestos';
+
+                if(state != ''){
+                    url = url+'/'+state
+                }
+
+                if(type != ''){
+                    url = url+'/'+type
+                }
+
+                if(brand != ''){
+                    url = url+'/'+brand
+                }
+                window.location.href = url;
+                return false;
+
+            })
+
+
+
+
+
+
+
+
+
+
 
         };
 

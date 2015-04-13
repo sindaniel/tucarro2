@@ -323,7 +323,10 @@
                   <div class="col-md-3 wow fadeInUp">
                     <div class="products"><div class="product">
                       <div class="product-image"><div class="image">
-                        <a href="<%= camion_path(truck.id, truck.link_rewrite) %>"><img  src="assets/images/blank.gif" data-echo="assets/images/productos/1.jpg" alt=""></a>
+                        <a href="<%= camion_path(truck.id, truck.link_rewrite) %>">
+
+                          <%= image_tag truck.picture1(:home ) %>
+                        </a>
                       </div></div><!-- /.product-image -->
                       <div class="product-info text-left">
                         <h3 class="name"><a href="#"><%= truck.nombre %></a></h3>
