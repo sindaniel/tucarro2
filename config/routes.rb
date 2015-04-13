@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
 
 
+  get 'servicio/:id-:link' => 'pages#servicio', :as =>'servicio'
+  get 'servicios' => 'pages#servicios'
+  get 'servicios/:param1' => 'pages#servicios'
+  get 'servicios/:param1/:param2' => 'pages#servicios'
+
+
 
 
 
@@ -34,6 +40,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
+
+    get '/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
     resources :trucks,  :type_truck, :brands_truck, :brand_extra, :type_extra, :extras, :type_service, :services
 
 

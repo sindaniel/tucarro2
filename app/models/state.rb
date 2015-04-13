@@ -1,6 +1,7 @@
 class State < ActiveRecord::Base
   has_many :city
   has_many :trucks
+  has_many :services
 
   default_scope { order("name ASC") }
 
