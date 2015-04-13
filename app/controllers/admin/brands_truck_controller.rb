@@ -17,14 +17,13 @@ class Admin::BrandsTruckController < ApplicationController
 
 
     @type = TypeTruck.find_by_id(params[:type_truck_id])
-    @brand = BrandTruck.new(:type_truck_id => @type )
+    @brand = BrandTruck.new
     add_breadcrumb 'Agregar'
   end
 
   def create
 
     @brand = BrandTruck.new(allowed_params)
-    @brand.type_truck_id = params[:type_truck_id]
     if @brand.save
       flash[:notice] = 'Información agregada correctamente'
       redirect_to admin_brands_truck_index_path

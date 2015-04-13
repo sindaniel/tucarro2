@@ -316,7 +316,7 @@
       <div class="tab-pane active " id="grid-container">
         <div class="category-product  inner-top-vs">
           <div class="row">
-            <% if !@extras.nil? %>
+            <% if !@extras.nil?  && @extras.count>0%>
                 <% @extras.each do |extra| %>
 
 
@@ -350,7 +350,7 @@
                 <% end %>
             <% else %>
                 <p>
-                  No se encuentran resultados con al busqueda
+                  No se encuentran resultados con la busqueda
                 </p>
             <% end %>
 

@@ -2,7 +2,7 @@ class Extra < ActiveRecord::Base
 
 
   belongs_to :brand_extra
-  belongs_to :type_extra
+  belongs_to :type_truck
   belongs_to :city
   belongs_to :state
 
@@ -11,7 +11,7 @@ class Extra < ActiveRecord::Base
   validates :state_id, presence: true
   validates :city_id, presence: true
   validates :brand_extra_id, presence: true
-  validates :type_extra_id, presence: true
+  validates :type_truck_id, presence: true
 
 
 

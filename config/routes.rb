@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
-    resources :trucks,  :type_truck, :brands_truck, :brand_extra, :type_extra, :extras
+    resources :trucks,  :type_truck, :brands_truck, :brand_extra, :type_extra, :extras, :type_service, :services
 
 
 

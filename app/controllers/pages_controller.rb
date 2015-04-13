@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def index
 
     @types = TypeTruck.all
-    @typesExtra = TypeExtra.all
+
   end
 
 
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
       render json: @brands
 
     else
-      @brands = Truck.where(type_truck_id: params[:id]).group(:type_truck_id)
+      @brands = Truck.where(type_truck_id: params[:id]).group(:brand_truck_id)
       render json: @brands, :include =>[:brand_truck]
       #@brands = BrandTruck.where(type_truck_id: params[:id]).all
     end
@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       render json: @brands
 
     else
-      @brands = Extra.where(type_extra_id: params[:id]).group(:type_extra_id)
+      @brands = Extra.where(type_truck_id: params[:id]).group(:brand_extra_id)
       render json: @brands, :include =>[:brand_extra]
       #@brands = BrandTruck.where(type_truck_id: params[:id]).all
     end
@@ -66,9 +66,9 @@ class PagesController < ApplicationController
     #busqueda de un parametro
     if(!params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
 
-      if TypeExtra.where(link_rewrite: params[:param1]).exists?
-        types = TypeExtra.find_by_link_rewrite(params[:param1])
-        @extras = Extra.where(type_extra_id: types.id).all.page(params[:page])
+      if TypeTruck.where(link_rewrite: params[:param1]).exists?
+        types = TypeTruck.find_by_link_rewrite(params[:param1])
+        @extras = Extra.where(type_truck_id: types.id).all.page(params[:page])
       end
 
 
@@ -95,7 +95,7 @@ class PagesController < ApplicationController
       @p2 = nil
 
 
-      if TypeExtra.where(link_rewrite: params[:param1]).exists?
+      if TypeTruck.where(link_rewrite: params[:param1]).exists?
         @p1 = 'type'
       end
 
@@ -110,7 +110,7 @@ class PagesController < ApplicationController
       end
 
 
-      if TypeExtra.where(link_rewrite: params[:param2]).exists?
+      if TypeTruck.where(link_rewrite: params[:param2]).exists?
         @p2 = 'type'
       end
 
@@ -127,29 +127,29 @@ class PagesController < ApplicationController
 
 
       if @p1 == 'type' &&  @p2 == 'brand'
-        type = TypeExtra.find_by_link_rewrite(params[:param1])
+        type = TypeTruck.find_by_link_rewrite(params[:param1])
         brand = BrandExtra.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_extra_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
       end
 
 
       if @p1 == 'brand' &&  @p2 == 'type'
         brand = BrandExtra.find_by_link_rewrite(params[:param1])
-        type = TypeExtra.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_extra_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+        type = TypeTruck.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_truck_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
       end
 
       if @p1 == 'type' &&  @p2 == 'state'
-        type = TypeExtra.find_by_link_rewrite(params[:param1])
+        type = TypeTruck.find_by_link_rewrite(params[:param1])
         state = State.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_extra_id: type.id, state_id: state.id).all.page(params[:page])
+        @extras = Extra.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
       end
 
 
       if @p1 == 'state' &&  @p2 == 'type'
         state = State.find_by_link_rewrite(params[:param1])
-        type = TypeExtra.find_by_link_rewrite(params[:param2])
-        @extras = Extra.where(type_extra_id: type.id, state_id: state.id).all.page(params[:page])
+        type = TypeTruck.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_truck_id: type.id, state_id: state.id).all.page(params[:page])
       end
 
       if @p1 == 'state' &&  @p2 == 'brand'
@@ -178,11 +178,11 @@ class PagesController < ApplicationController
 
 
       state = State.find_by_link_rewrite(params[:param1])
-      type = TypeExtra.find_by_link_rewrite(params[:param2])
+      type = TypeTruck.find_by_link_rewrite(params[:param2])
       brand = BrandExtra.find_by_link_rewrite(params[:param3])
 
       if !brand.nil? && !state.nil? && !type.nil?
-        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, type_extra_id: type.id).all.page(params[:page])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, type_truck_id: type.id).all.page(params[:page])
       end
 
 

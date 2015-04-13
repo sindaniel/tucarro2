@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413160458) do
+ActiveRecord::Schema.define(version: 20150413181136) do
 
   create_table "brand_extras", force: true do |t|
     t.string   "name"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20150413160458) do
     t.string   "phone"
     t.string   "horario"
     t.text     "description"
-    t.integer  "type_extra_id"
     t.integer  "brand_extra_id"
     t.string   "link_rewrite"
     t.datetime "created_at"
@@ -69,6 +68,21 @@ ActiveRecord::Schema.define(version: 20150413160458) do
     t.string   "picture5_content_type"
     t.integer  "picture5_file_size"
     t.datetime "picture5_updated_at"
+    t.integer  "type_truck_id"
+  end
+
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.string   "link_rewrite"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.integer  "type_service_id"
+    t.string   "horario"
+    t.string   "address"
+    t.boolean  "state"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "states", force: true do |t|

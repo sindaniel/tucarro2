@@ -130,7 +130,7 @@
                 <div class="col-xs-4 col-sm-4 col-md-4"><fieldset class="attribute_fieldset">
                   <label for="group_1" class="attribute_label attribute-key"><p>TIPO DE <b>CAMIÓN</b></p></label>
                   <div class="attribute_list">
-                    <%= select :servicio,:type, options_for_select(@typesExtra.map{ |c| [c.name, c.link_rewrite, {'data-id'=>c.id}] }), {prompt: 'Todas las marcas'}, :class=>'form-control' %>
+                    <%= select :servicio,:type, options_for_select(@types.map{ |c| [c.name, c.link_rewrite, {'data-id'=>c.id}] }), {prompt: 'Todas las marcas'}, :class=>'form-control' %>
 
 
                   </div> <!-- /.attribute_list -->
