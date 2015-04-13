@@ -85,6 +85,113 @@ class PagesController < ApplicationController
 
     end
 
+
+
+
+
+    #busqueda de dos parametro
+    if(!params[:param1].nil? && !params[:param2].nil? && params[:param3].nil?)
+      @p1 = nil
+      @p2 = nil
+
+
+      if TypeExtra.where(link_rewrite: params[:param1]).exists?
+        @p1 = 'type'
+      end
+
+
+      if BrandExtra.where(link_rewrite: params[:param1]).exists?
+        @p1 = 'brand'
+      end
+
+
+      if State.where(link_rewrite: params[:param1]).exists?
+        @p1 = 'state'
+      end
+
+
+      if TypeExtra.where(link_rewrite: params[:param2]).exists?
+        @p2 = 'type'
+      end
+
+
+      if BrandExtra.where(link_rewrite: params[:param2]).exists?
+        @p2 = 'brand'
+      end
+
+
+      if State.where(link_rewrite: params[:param2]).exists?
+        @p2 = 'state'
+      end
+
+
+
+      if @p1 == 'type' &&  @p2 == 'brand'
+        type = TypeExtra.find_by_link_rewrite(params[:param1])
+        brand = BrandExtra.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_extra_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+      end
+
+
+      if @p1 == 'brand' &&  @p2 == 'type'
+        brand = BrandExtra.find_by_link_rewrite(params[:param1])
+        type = TypeExtra.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_extra_id: type.id, brand_extra_id: brand.id).all.page(params[:page])
+      end
+
+      if @p1 == 'type' &&  @p2 == 'state'
+        type = TypeExtra.find_by_link_rewrite(params[:param1])
+        state = State.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_extra_id: type.id, state_id: state.id).all.page(params[:page])
+      end
+
+
+      if @p1 == 'state' &&  @p2 == 'type'
+        state = State.find_by_link_rewrite(params[:param1])
+        type = TypeExtra.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(type_extra_id: type.id, state_id: state.id).all.page(params[:page])
+      end
+
+      if @p1 == 'state' &&  @p2 == 'brand'
+        state = State.find_by_link_rewrite(params[:param1])
+        brand = BrandExtra.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id).all.page(params[:page])
+      end
+
+
+      if @p1 == 'brand' &&  @p2 == 'state'
+        brand = BrandExtra.find_by_link_rewrite(params[:param1])
+        state = State.find_by_link_rewrite(params[:param2])
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id).all.page(params[:page])
+      end
+
+
+
+    end
+
+
+
+
+
+#con tres parametros repuesto
+    if(!params[:param1].nil? && !params[:param2].nil? && !params[:param3].nil?)
+
+
+      state = State.find_by_link_rewrite(params[:param1])
+      type = TypeExtra.find_by_link_rewrite(params[:param2])
+      brand = BrandExtra.find_by_link_rewrite(params[:param3])
+
+      if !brand.nil? && !state.nil? && !type.nil?
+        @extras = Extra.where(brand_extra_id: brand.id, state_id: state.id, type_extra_id: type.id).all.page(params[:page])
+      end
+
+
+
+
+    end
+
+
+
   end
 
 

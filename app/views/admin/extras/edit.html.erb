@@ -123,6 +123,70 @@
         </div>
 
 
+        <br/>
+
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :picture1, 'Imagen 1' %>
+              <%= f.file_field :picture1, :class =>'form-control'  %>
+
+              <% if @extra.picture1.to_s  != '/images/missing.png' %>
+                  <%= image_tag @extra.picture1(:home ), :class=>'img-thumbnail img-responsive' %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :picture2, 'Imagen 2' %>
+              <%= f.file_field :picture2, :class =>'form-control'  %>
+
+              <% if @extra.picture2.to_s  != '/images/missing.png' %>
+                  <%= image_tag @extra.picture2(:home ), :class=>'img-thumbnail img-responsive' %>
+              <% end %>
+
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :picture3, 'Imagen 3' %>
+              <%= f.file_field :picture3, :class =>'form-control'  %>
+              <% if @extra.picture3.to_s  != '/images/missing.png' %>
+                  <%= image_tag @extra.picture3(:home ), :class=>'img-thumbnail img-responsive' %>
+              <% end %>
+
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :picture4, 'Imagen 4' %>
+              <%= f.file_field :picture4, :class =>'form-control'  %>
+
+
+              <% if @extra.picture4.to_s  != '/images/missing.png' %>
+                  <%= image_tag @extra.picture4(:home ), :class=>'img-thumbnail img-responsive' %>
+              <% end %>
+
+
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :picture5, 'Imagen 5' %>
+              <%= f.file_field :picture5, :class =>'form-control'  %>
+
+
+              <% if @extra.picture5.to_s  != '/images/missing.png' %>
+                  <%= image_tag @extra.picture5(:home ), :class=>'img-thumbnail img-responsive' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
 
 
         <%= f.submit 'Guardar', :class=> 'btn btn-info' %>
