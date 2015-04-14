@@ -1,7 +1,7 @@
 class Admin::BrandExtraController < ApplicationController
   before_action :authenticate_user!
   layout  'admin/layouts/application'
-  add_breadcrumb 'Marcas de repuesto', :admin_brand_extra_index_path, :options => { :title =>'Inicio' }
+  add_breadcrumb 'Tipo de repuesto', :admin_brand_extra_index_path, :options => { :title =>'Inicio' }
 
 
   def index

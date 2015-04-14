@@ -169,7 +169,7 @@
                   <label for="group_1" class="attribute_label attribute-key"><p>TIPO DE <b>SERVICIO</b></p></label>
                   <div class="attribute_list">
 
-                    <%= collection_select(:state, :service, Service.order(:id), :link_rewrite, :name, {prompt: 'Selecciona'}, :class=>'form-control') %>
+                    <%= collection_select(:state, :service, TypeService.order(:id), :link_rewrite, :name, {prompt: 'Selecciona'}, :class=>'form-control') %>
                   </div> <!-- /.attribute_list -->
                 </fieldset></div>
 
