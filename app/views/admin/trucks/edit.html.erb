@@ -86,6 +86,25 @@
 
 
 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :placa_state_id, 'Departamento placa' %>
+            <%= f.collection_select :placa_state_id, State.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :placa_city_id, 'Ciudad placa' %>
+            <%= f.select(:placa_city_id, [['','' ]], {}, { :class => 'form-control' }) %>
+          </div>
+        </div>
+
+      </div>
+
+
+
 
     <div class="row">
       <div class="col-md-6">
@@ -491,12 +510,53 @@
 
 
 
+
+
+        $('#truck_placa_state_id').on('change', function() {
+
+            $('#truck_placa_city_id option').html('')
+            function loader(data){
+                $('#truck_placa_city_id option').html('Cargando...')
+            };
+
+            function error(data){
+                alert("Error enviados los datos");
+            };
+
+
+
+            $.ajax({
+                async: true,
+                type: "GET",
+                dataType: 'json',
+                beforeSend:loader,
+                error:error,
+                success: function (msg) {
+
+
+                    $('#truck_placa_city_id').html('')
+
+
+                    $.each(msg, function(index, value) {
+                        console.log('<option value="'+value.id+'">'+value.name+'</option>');
+                        $('#truck_placa_city_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                    });
+
+                },
+                url:"/admin/states/"+this.value+"/cities.json"
+            });
+
+        });
+
+
+
         //Cargo dato cuando carga la pagina
 
 
 
         function loader(data){
             $('#truck_city_id option').html('Cargando...')
+
         };
 
         function error(data){
@@ -527,9 +587,62 @@
 
                 });
 
+
             },
             url:"/admin/states/<%= @truck.state_id %>/cities.json"
         });
+
+
+
+
+
+
+        function loader(data){
+
+            $('#truck_placa_city_id option').html('Cargando...')
+        };
+
+        function error(data){
+            alert("Error enviados los datos");
+        };
+
+
+
+        $.ajax({
+            async: true,
+            type: "GET",
+            dataType: 'json',
+            beforeSend:loader,
+            error:error,
+            success: function (msg) {
+
+                console.log(msg)
+
+                $('#truck_placa_city_id').html('')
+
+
+
+
+
+                $.each(msg, function(index, value) {
+                    console.log('<option value="'+value.id+'">'+value.name+'</option>');
+                    if(value.id == '<%= @truck.city_id %>'){
+                        $('#truck_placa_city_id').append('<option selected value="'+value.id+'">'+value.name+'</option>')
+                    }else{
+                        $('#truck_placa_city_id').append('<option value="'+value.id+'">'+value.name+'</option>')
+                    }
+
+                });
+
+            },
+            url:"/admin/states/<%= @truck.placa_state_id %>/cities.json"
+        });
+
+
+
+
+
+
 
 
 

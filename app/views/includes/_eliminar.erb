@@ -1,6 +1,6 @@
 <div id="eliminar">
 
-
+<%= debug @mostrarEstado %>
 
 
 <%
@@ -88,6 +88,59 @@
 
 
   <% end %>
+
+
+
+
+
+
+  <%
+     url = @fullbBase.split('_')
+
+     if url.index('placa')
+       position = @fullbBase.split('_').index('placa')
+       texto = url[@fullbBase.split('_').index('placa')+1]
+       url.delete_at(position)
+       url.delete_at(position)
+  %>
+
+      <div class="widget-header">
+        <h4 class="widget-title">
+          <a href="<%= toUrl(url).chop %>">Placa  de <%= texto.capitalize %> <i class="fa fa-times"></i></a>
+        </h4>
+      </div>
+
+
+  <% end %>
+
+
+
+
+  <%
+     url = @fullbBase.split('_')
+     if url.index('precio')
+       position = @fullbBase.split('_').index('precio')
+       texto = url[@fullbBase.split('_').index('precio')+1]
+       url.delete_at(position)
+       url.delete_at(position)
+
+  %>
+
+      <div class="widget-header">
+        <h4 class="widget-title">
+          <a href="<%= toUrl(url).chop %>">
+            <%= number_to_currency texto.split(',')[0] %> - <%= number_to_currency texto.split(',')[1] %>
+
+            <i class="fa fa-times"></i></a>
+        </h4>
+      </div>
+
+
+  <% end %>
+
+
+
+
 
 
 </div>

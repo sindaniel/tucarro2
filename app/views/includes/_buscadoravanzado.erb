@@ -1,24 +1,27 @@
 <h3 class="section-title">Opciones de Busqueda</h3>
 <div class="sidebar-filter">
-
+  <% if @mostrarPrice %>
   <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
     <div class="widget-header">
       <h4 class="widget-title">Rango de Precio</h4>
     </div>
+
     <div class="sidebar-widget-body m-t-20">
       <div class="price-range-holder">
             <span class="min-max">
-                 <span class="pull-left">$80.000.000</span>
-                 <span class="pull-right">$100.000.000</span>
+                 <span class="pull-left">$10.000.000</span>
+                 <span class="pull-right">$600.000.000</span>
             </span>
-        <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
+        <input type="text" name="pruce" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
 
-        <input type="text" class="price-slider" value="" >
+        <input type="text"  id="priceRange" class="price-slider" value="" >
 
       </div><!-- /.price-range-holder -->
-      <a href="#" class="lnk btn btn-primary">Buscar</a>
+      <button id="submitPrice" class="lnk btn btn-primary">Buscar</button>
     </div><!-- /.sidebar-widget-body -->
+
   </div><!-- /.sidebar-widget -->
+        <% end %>
 
   <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
   <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
@@ -51,10 +54,6 @@
 
                           <li><a href="<%= agregarParametroSegundarios(@fullbBase, 'modelo', modelo.modelo, true) %>"><%= modelo.modelo %> <small>(<%= modelo.total %>)</small></a> </li>
                       <% end %>
-
-
-
-
 
                   <% end %>
 
@@ -201,19 +200,25 @@
         <% end %>
 
 
-
+    <% if @mostrarPlaca %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#uplaca" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación Placa</a>
         </div><!-- /.accordion-heading -->
           <div class="accordion-body collapse" id="uplaca" style="height: 0px;"><div class="accordion-inner">
             <ul>
-              <li><a href="#">Cundinamarca</a></li>
-              <li><a href="#">Antioquia</a></li>
-              <li><a href="#">Boyaca</a></li>
-              <li><a href="#">Bolivar</a></li>
-              <li><a href="#">Santander</a></li>
+              <% @statesPlaca.each do |placa| %>
+                  <%if params[:param1].present? %>
+
+                      <li><a href="<%= agregarParametroSegundarios(@fullbBase, 'placa', placa.link_rewrite, false) %>"><%= placa.name %> <small>(<%= placa.total %>)</small></a> </li>
+                  <% else %>
+
+                      <li><a href="<%= agregarParametroSegundarios(@fullbBase, 'placa', placa.link_rewrite, true) %>"><%= placa.name %> <small>(<%= placa.total %>)</small></a> </li>
+                  <% end %>
+
+              <% end %>
             </ul>
-          </div></div></div><!-- /.accordion-group -->
+          </div></div></div>
+        <% end %>
 
       </div><!-- /.accordion -->
     </div><!-- /.sidebar-widget-body -->
@@ -239,3 +244,4 @@
   <!-- ============================================== COLOR: END ============================================== -->
 
 </div><!-- /.sidebar-filter -->
+

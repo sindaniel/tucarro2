@@ -297,10 +297,10 @@ $(document).ready(function () {
 // Price Slider
 if ($('.price-slider').length > 0) {
     $('.price-slider').slider({
-        min: 100,
-        max: 700,
-        step: 10,
-        value: [200, 500],
+        min: 100000,
+        max: 600000000,
+        step: 1000000,
+        value: [100000, 600000000],
         handle: "square"
 
     });
@@ -410,6 +410,37 @@ $('#transitionType li a').click(function () {
     return false;
 
 });
+
+
+
+
+    var urlWithPrice = ''
+        $('#submitPrice').click(function(){
+            var url = window.location.href;
+            var rango  = $('#priceRange').val();
+            urlWithPrice = ''
+            urlWithPrice = url+'_precio_'+rango
+
+
+
+
+
+
+            var url = window.location.href;
+            if (url.indexOf("_") == -1){
+                window.location  = url+'_precio_'+rango
+            } else{
+                window.location  = url+'_precio_'+rango
+            }
+
+
+
+            return false;
+        });
+
+
+
+
 
 
 })(jQuery);

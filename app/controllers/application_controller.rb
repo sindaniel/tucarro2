@@ -15,9 +15,7 @@ class ApplicationController < ActionController::Base
 
 
   def toSql(vars)
-    puts '----'
-  puts vars
-    puts '----'
+
     string = ''
     wheres =[]
     cuenta = 0
@@ -52,6 +50,9 @@ class ApplicationController < ActionController::Base
       else
 
 
+
+      puts var[0]
+      if(var[0] != 'placa' && var[0] != 'precio')
         cuenta = cuenta+1
 
         if vars.count != cuenta
@@ -61,6 +62,33 @@ class ApplicationController < ActionController::Base
         end
 
         wheres.push(var[0]+'='+var[1].to_s)
+
+      else
+
+
+        if(var[0] == 'placa')
+
+         idPlaca = State.find_by_link_rewrite(var[1]).id
+
+         string += 'placa_state_id'+'='+idPlaca.to_s+' AND '
+
+         wheres.push('placa_state_id'+'='+idPlaca.to_s)
+
+        end
+
+
+        if(var[0] == 'precio')
+
+
+          precios = var[1].split(',')
+          wheres.push('price'+'>='+precios[0])
+          wheres.push('price'+'<='+precios[1])
+
+        end
+
+
+      end
+
 
 
 
@@ -91,6 +119,7 @@ class ApplicationController < ActionController::Base
 
     end
 
+    puts string
 
     string
 

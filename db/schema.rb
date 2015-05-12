@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413194141) do
+ActiveRecord::Schema.define(version: 20150512032254) do
 
   create_table "brand_extras", force: true do |t|
     t.string   "name"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 20150413194141) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link_rewrite"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "event"
+    t.string   "lang"
+    t.string   "subject"
+    t.text     "comments"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "extras", force: true do |t|
@@ -70,6 +84,94 @@ ActiveRecord::Schema.define(version: 20150413194141) do
     t.datetime "picture5_updated_at"
     t.integer  "type_truck_id"
     t.integer  "active",                           default: 1
+  end
+
+  create_table "images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "pictures", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "place_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "places", force: true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "address"
+    t.string   "location"
+    t.datetime "date"
+    t.string   "meta_title"
+    t.string   "meta_description"
+    t.string   "meta_keywords"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "singlepricea"
+    t.string   "singlepriced"
+    t.string   "singlepricer"
+    t.string   "triplepricea"
+    t.string   "triplepriced"
+    t.string   "triplepricer"
+    t.string   "vippricea"
+    t.string   "vippriced"
+    t.string   "vippricer"
+  end
+
+  add_index "places", ["name"], name: "index_places_on_name", unique: true, using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "question_es"
+    t.string   "question_pt"
+    t.text     "answer_es"
+    t.text     "answer_pt"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "emailAddress"
+    t.string   "customCheckbox"
+    t.integer  "place_id"
+  end
+
+  create_table "sections", force: true do |t|
+    t.string   "title"
+    t.string   "name_es"
+    t.string   "name_pt"
+    t.text     "content_es"
+    t.text     "content_pt"
+    t.integer  "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "meta_title_es"
+    t.string   "meta_description_es"
+    t.string   "meta_keywords_es"
+    t.string   "meta_title_pt"
+    t.string   "meta_description_pt"
+    t.string   "meta_keywords_pt"
   end
 
   create_table "services", force: true do |t|
@@ -184,6 +286,8 @@ ActiveRecord::Schema.define(version: 20150413194141) do
     t.datetime "picture5_updated_at"
     t.text     "descripccion"
     t.integer  "active",                           default: 1
+    t.integer  "placa_city_id"
+    t.integer  "placa_state_id"
   end
 
   create_table "type_extras", force: true do |t|

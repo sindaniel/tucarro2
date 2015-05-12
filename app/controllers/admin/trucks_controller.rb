@@ -78,6 +78,6 @@ class Admin::TrucksController < ApplicationController
   private
   def allowed_params
     #params.require(:truck).permit(:nombre, :quintarueda)
-    params.require(:truck).permit!
+      params.require(:truck).permit!
   end
 end
