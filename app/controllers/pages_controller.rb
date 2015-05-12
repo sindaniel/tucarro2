@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   layout 'index', :only => [ :index ]
+
+
   def index
 
     @types = TypeTruck.all
@@ -202,32 +204,256 @@ class PagesController < ApplicationController
 
     #@types = TypeTruck.all
     #@p = params
+    @fullbBase = 'http://localhost:3000'+request.fullpath
+    @queryModelos = []
+    @queryStates = []
+    @queryTrucks = []
+    @parametroPrincipal = false
+    @muestroEstado = true
+    @muestroMarca = true
+    @mostrarKm = true
+    @mostrarEstado = true
+
+
 
 
     if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
+
+
+
+
+
       @trucks = Truck.all.where(active: 1).page(params[:page])
+
+
+      @modelos = Truck.
+          select('modelo, count(modelo) as total').
+          group('modelo').
+          order('modelo DESC')
+
+
+
+      @estado = Truck.
+          select('
+          SUM(CASE WHEN estado = 0 THEN 1 ELSE 0 END) AS nuevo,
+          SUM(CASE WHEN estado = 1 THEN 1 ELSE 0 END) AS usado')
+
+
+
+
+      @km = Truck.
+          select('
+          SUM(CASE WHEN kilometraje = 0 THEN 1 ELSE 0 END) AS price_range_1,
+SUM(CASE WHEN kilometraje >= 1 and kilometraje <=25000 THEN 1 ELSE 0 END) AS price_range_2,
+SUM(CASE WHEN kilometraje >= 25001 and kilometraje <=50000 THEN 1 ELSE 0 END) AS price_range_3,
+SUM(CASE WHEN kilometraje >= 50001 and kilometraje <=100000 THEN 1 ELSE 0 END) AS price_range_4,
+SUM(CASE WHEN kilometraje >100000 THEN 1 ELSE 0 END) AS price_range_5')
+
+
+
+
+      @states = Truck.
+          joins(:state).
+          select('name, count(name) as total, states.link_rewrite').
+          group('name').
+          order('name DESC')
+
+
+      @brands = Truck.
+          joins(:brand_truck).
+          select('name, count(name) as total, brand_trucks.link_rewrite').
+          group('name').
+          order('name DESC')
+
+
     end
 
 
     #busqueda de un parametro
     if(!params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)
 
+
+
+   #     @a.push(["active = ?"=>1] )
+      params[:param1current] =  params[:param1]
+
+
+
+
+
+
+
+      if params[:param1current].include? '_'
+        @url =  params[:param1current].split('_')
+
+        params[:param1] =  @url[0]
+
+        if @url.index('modelo')
+
+          valor = @url[@url.index('modelo')+1]
+          @queryModelos.push(['modelo', valor])
+          @queryTrucks.push(['modelo',valor])
+        end
+
+      end
+
+
+
+
+      if params[:param1current].include? '_'
+        @url =  params[:param1current].split('_')
+
+        params[:param1] =  @url[0]
+        @mostrarEstado = false
+        if @url.index('estado')
+          valor = @url[@url.index('estado')+1]
+          @queryModelos.push(['estado', valor])
+          @queryTrucks.push(['estado',valor])
+        end
+
+      end
+
+
+
+
+
+
+      if params[:param1current].include? '_'
+
+        @url =  params[:param1current].split('_')
+
+        params[:param1] =  @url[0]
+
+        if @url.index('kilometraje')
+          @mostrarKm = false
+
+          valor = @url[@url.index('kilometraje')+1]
+
+
+         if (valor.to_i == 0)
+               @queryModelos.push(['kilometraje', '0'])
+               @queryTrucks.push(['kilometraje','0'])
+
+         else  if(valor.to_i > 0 && valor.to_i < 100001)
+
+                valores = valor.split('-')
+
+                valor = '-kilometraje-'+valores[0]+'-kilometraje-'+valores[1]
+
+                @queryModelos.push(['kilometraje', valor])
+                @queryTrucks.push(['kilometraje',valor])
+            else if (valor.to_i >= 100001)
+
+                   @queryModelos.push(['kilometraje', '100001'])
+                   @queryTrucks.push(['kilometraje','100001'])
+
+                      end
+            end
+          end
+
+
+
+
+        end
+
+      end
+
+
+
+
+        @trucks = Truck.where(toSql(@queryTrucks)).all.page(params[:page])
+
+
         if TypeTruck.where(link_rewrite: params[:param1]).exists?
+          @parametroPrincipal = true
           types = TypeTruck.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(type_truck_id: types.id, active: 1).all.page(params[:page])
+
+          @queryTrucks.push(['type_truck_id', types.id])
+          @trucks = Truck.where(toSql(@queryTrucks)).all.page(params[:page])
+
+
+          @queryModelos.push (['type_truck_id', types.id])
+
+
+
         end
 
 
         if BrandTruck.where(link_rewrite: params[:param1]).exists?
+          @parametroPrincipal = true
+          @muestroMarca = false
           brand = BrandTruck.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(brand_truck_id: brand.id, active: 1).all.page(params[:page])
+          @queryTrucks.push(['brand_truck_id', brand.id])
+          @trucks = Truck.where(toSql(@queryTrucks)).all.page(params[:page])
+
+
+          @queryModelos.push (['brand_truck_id', brand.id])
+
+
+
         end
 
 
         if State.where(link_rewrite: params[:param1]).exists?
           state = State.find_by_link_rewrite(params[:param1])
-          @trucks = Truck.where(state_id: state.id, active: 1).all.page(params[:page])
+          @parametroPrincipal = true
+          @muestroEstado = false
+
+          @queryTrucks.push(['state_id', state.id])
+          @trucks = Truck.where(toSql(@queryTrucks)).all.page(params[:page])
+
+
+          @queryModelos.push (['state_id', state.id])
+
         end
+
+
+
+        @modelos = Truck.
+            where(toSql(@queryModelos)).
+            select('modelo, count(modelo) as total').
+            group('modelo').
+            order('modelo DESC')
+
+
+        @states = Truck.
+            joins(:state).
+            where(toSql(@queryModelos)).
+            select('name, count(name) as total, states.link_rewrite').
+            group('name').
+            order('name DESC')
+
+
+
+      @brands = Truck.
+          joins(:brand_truck).
+          where(toSql(@queryModelos)).
+          select('name, count(name) as total, brand_trucks.link_rewrite').
+          group('name').
+          order('name DESC')
+
+
+
+      @km = Truck.
+          select('
+          SUM(CASE WHEN kilometraje = 0 THEN 1 ELSE 0 END) AS price_range_1,
+SUM(CASE WHEN kilometraje >= 1 and kilometraje <=25000 THEN 1 ELSE 0 END) AS price_range_2,
+SUM(CASE WHEN kilometraje >= 25001 and kilometraje <=50000 THEN 1 ELSE 0 END) AS price_range_3,
+SUM(CASE WHEN kilometraje >= 50001 and kilometraje <=100000 THEN 1 ELSE 0 END) AS price_range_4,
+SUM(CASE WHEN kilometraje >100000 THEN 1 ELSE 0 END) AS price_range_5').
+          where(toSql(@queryModelos))
+
+
+      @estado = Truck.
+          select('
+          SUM(CASE WHEN estado = 0 THEN 1 ELSE 0 END) AS nuevo,
+          SUM(CASE WHEN estado = 1 THEN 1 ELSE 0 END) AS usado').
+          where(toSql(@queryModelos))
+
+
+
+
+
 
     end
 

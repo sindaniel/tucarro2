@@ -5320,3 +5320,23 @@ a {
 .menosz{
   z-index: -9999;
 }
+
+
+#eliminar .widget-header {
+  background: #eeeeee;
+
+  font-size: 14px;
+  font-family: 'FjallaOneRegular';
+  margin: 0px;
+}
+
+#eliminar .widget-header a{
+  color: #666666;
+  padding: 10px 15px;
+  display: inline-block;
+  width:100%;
+  font-size: 14px;
+}
+#eliminar .widget-header a i{
+  float:right;
+}
