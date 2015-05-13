@@ -162,7 +162,41 @@ class ApplicationController < ActionController::Base
 
   def removerParametroPrincipal(url, parametro)
 
+
     url = url.sub(parametro, '')
+
+    puts url.scan('//').count
+
+
+    if url.scan('//').count >= 2
+
+      puts url.split('//')
+
+      cuenta = 1
+      newUrl = ''
+      url.split('//').each do |item|
+
+        if cuenta == 1
+          newUrl += item+'//'
+
+        else
+
+
+          if url.split('//').count == cuenta
+            newUrl += item
+          else
+            newUrl += item+'/'
+          end
+
+
+        end
+        cuenta = cuenta +1
+      end
+      url = newUrl
+
+    end
+
+
     url
 
   end
