@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
 
        else
          valores = var[1].split('-')
-         wheres.push('kilometraje >='+valores[2]+' AND kilometraje <='+valores[4])
-         string +='kilometraje >='+valores[2]+' AND kilometraje <='+valores[4]
+         wheres.push('kilometraje >='+valores[2].to_i+' AND kilometraje <='+valores[4].to_i)
+         string +='kilometraje >='+valores[2].to_i+' AND kilometraje <='+valores[4].to_i
 
        end
 
