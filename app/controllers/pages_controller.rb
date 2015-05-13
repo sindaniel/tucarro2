@@ -204,7 +204,7 @@ class PagesController < ApplicationController
 
     #@types = TypeTruck.all
     #@p = params
-    @fullbBase = 'http://localhost:3000'+request.fullpath
+    @fullbBase = 'http://104.131.26.112:3000'+request.fullpath
     @queryModelos = []
     @queryStates = []
     @queryTrucks = []
