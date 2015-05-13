@@ -38,8 +38,14 @@ class ApplicationController < ActionController::Base
 
        else
          valores = var[1].split('-')
-         wheres.push('kilometraje >='+valores[2].to_i+' AND kilometraje <='+valores[4].to_i)
-         string +='kilometraje >='+valores[2].to_i+' AND kilometraje <='+valores[4].to_i
+         puts valores
+         if valores.count == 1
+           wheres.push('kilometraje ='+var[1])
+         else
+           wheres.push('kilometraje >='+valores[2]+' AND kilometraje <='+valores[4])
+           string +='kilometraje >='+valores[2]+' AND kilometraje <='+valores[4]
+         end
+
 
        end
 
@@ -51,7 +57,7 @@ class ApplicationController < ActionController::Base
 
 
 
-      puts var[0]
+
       if(var[0] != 'placa' && var[0] != 'precio')
         cuenta = cuenta+1
 
@@ -119,7 +125,8 @@ class ApplicationController < ActionController::Base
 
     end
 
-    puts string
+
+
 
     string
 
@@ -165,12 +172,11 @@ class ApplicationController < ActionController::Base
 
     url = url.sub(parametro, '')
 
-    puts url.scan('//').count
+
 
 
     if url.scan('//').count >= 2
 
-      puts url.split('//')
 
       cuenta = 1
       newUrl = ''
