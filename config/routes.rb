@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+
+
   root 'pages#index'
   get 'marcas/:id' => 'pages#getbrands'
   get 'marcas/' => 'pages#getbrands'
@@ -42,7 +44,19 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
 
     get '/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
-    resources :trucks,  :type_truck, :brands_truck, :brand_extra, :type_extra, :extras, :type_service, :services
+
+    resources  :trucks,
+      :type_truck,
+      :brands_truck,
+      :brand_extra,
+      :type_extra,
+      :extras,
+      :type_service,
+      :services,
+      :colors_truck,
+      :scraps_truck,
+      :contracts_truck,
+      :wheels_truck
 
 
 

@@ -6,17 +6,6 @@ class Truck < ActiveRecord::Base
 
 
 
-  HUMANIZED_ATTRIBUTES = {
-      :nombre => 'Nombre',
-      :city_id => 'Ciudad',
-      :state_id => 'Departamento',
-      :brand_truck => 'Marca',
-      :type_truck => 'Tipo'
-  }
-
-  def self.human_attribute_name(attr, options = {})
-    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
-  end
 
 
 
@@ -39,12 +28,42 @@ class Truck < ActiveRecord::Base
 
 
 
-
   validates :nombre, presence: true
+  validates :modelo, presence: true
+  validates :brand_truck_id, presence: true
+  validates :type_truck_id, presence: true
   validates :state_id, presence: true
   validates :city_id, presence: true
-  validates :brand_truck, presence: true
-  validates :type_truck, presence: true
+
+  validates :kilometraje, presence: true
+  validates :estado, presence: true
+  validates :placa, presence: true
+  validates :tipocombustible, presence: true
+  validates :color, presence: true
+  validates :placa_city_id, presence: true
+
+  validates :placa_state_id, presence: true
+
+
+
+  HUMANIZED_ATTRIBUTES = {
+      :nombre => 'Nombre',
+      :city_id => 'Ciudad',
+      :state_id => 'Departamento',
+      :brand_truck_id => 'Marca',
+      :type_truck_id => 'Tipo',
+      :tipocombustible => 'Tipo combustible',
+      :placa_city_id => 'Ciudad Matricula',
+      :placa_state_id => 'Departamento Matricula'
+
+  }
+
+  def self.human_attribute_name(attr, options = {})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
+
+
+
 
 
 

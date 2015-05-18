@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
 
        else
          valores = var[1].split('-')
-         puts valores
+
          if valores.count == 1
            wheres.push('kilometraje ='+var[1])
          else
@@ -139,6 +139,8 @@ class ApplicationController < ActionController::Base
     url = ''
     cuenta = 0
 
+
+
     if vars.count > 1
 
 
@@ -158,10 +160,18 @@ class ApplicationController < ActionController::Base
       end
 
 
+
     else
+
       url = vars[0]
+
+
     end
-    url
+   if url[url.length-1] == '_'
+     n = url.length-2
+     url = url.slice(0..n)
+   end
+   url
   end
 
 
@@ -204,6 +214,23 @@ class ApplicationController < ActionController::Base
 
 
     url
+
+  end
+
+
+  def removerParametroPrincipal2(url, parametro)
+    if parametro.include? '_'
+
+      parametro =  '/'+extraigoParametroprincicpal(parametro) + '_'
+      url.gsub! parametro, '_'
+
+    else
+      url.gsub! parametro+'/', ''
+
+    end
+
+
+
 
   end
 
@@ -264,6 +291,22 @@ class ApplicationController < ActionController::Base
 
   end
 
-  helper_method :toUrl, :removerParametroPrincipal, :agregarParametroPrincipal, :agregarParametroSegundarios
+
+
+
+  def extraigoParametroprincicpal(parametro)
+
+    if parametro.include? '_'
+      parametro = parametro.split('_')
+      parametro[0]
+    else
+      parametro
+    end
+
+  end
+
+
+
+  helper_method :toUrl, :removerParametroPrincipal, :agregarParametroPrincipal, :agregarParametroSegundarios, :extraigoParametroprincicpal, :removerParametroPrincipal2
 
 end

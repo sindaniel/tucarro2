@@ -33,7 +33,7 @@
         </div>
 
 
-        <%if !@fullbBase.split('_').index('modelo')  %>
+        <%if !@fullbBase.split('_').index('modelo')  &&   @modelos.length  > 1 %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#modelo" data-toggle="collapse" class="accordion-toggle collapsed">Modelo</a>
         </div><!-- /.accordion-heading -->
@@ -68,13 +68,16 @@
 
 
         <% end %>
-
+        <% if @brands.length  > 1 %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#marcas" data-toggle="collapse" class="accordion-toggle collapsed">Marcas</a>
         </div><!-- /.accordion-heading -->
           <div class="accordion-body collapse" id="marcas" style="height: 0px;"><div class="accordion-inner">
             <ul>
-              <% if @muestroMarca %>
+
+
+
+
                   <%  if params[:param1].present? %>
                       <% @brands.each do |brand| %>
                           <li> <a href="<%= agregarParametroPrincipal(@fullbBase, brand.link_rewrite, true) %>"><%= brand.name %> <small>(<%= brand.total %>)</small></a></li>
@@ -91,13 +94,15 @@
                           <% end %>
                       <% end %>
                   <% end %>
-              <% end %>
+
             </ul>
           </div></div></div><!-- /.accordion-group -->
+        <% end %>
 
 
 
         <% if @muestroEstado  %>
+            <% if @states.length  > 1 %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#ubicacion" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación</a>
         </div><!-- /.accordion-heading -->
@@ -133,8 +138,9 @@
             </ul>
           </div></div></div><!-- /.accordion-group -->
               <%  end %>
+        <%  end %>
 
-        <% if @mostrarKm %>
+        <% if @mostrarKm   &&   @km.length  > 1  %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#kilometraje" data-toggle="collapse" class="accordion-toggle collapsed">Kilometraje</a>
         </div><!-- /.accordion-heading -->
@@ -172,7 +178,7 @@
 
 
 
-        <% if @mostrarEstado %>
+        <% if @mostrarEstado  &&   @estado.length  > 1  %>
         <div class="accordion-group"><div class="accordion-heading">
           <a href="#estado" data-toggle="collapse" class="accordion-toggle collapsed">Estado</a>
         </div><!-- /.accordion-heading -->
@@ -200,9 +206,9 @@
         <% end %>
 
 
-    <% if @mostrarPlaca %>
+    <% if @mostrarPlaca   &&   @statesPlaca.length  > 1 %>
         <div class="accordion-group"><div class="accordion-heading">
-          <a href="#uplaca" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación Placa</a>
+          <a href="#uplaca" data-toggle="collapse" class="accordion-toggle collapsed">Matriculada en</a>
         </div><!-- /.accordion-heading -->
           <div class="accordion-body collapse" id="uplaca" style="height: 0px;"><div class="accordion-inner">
             <ul>
