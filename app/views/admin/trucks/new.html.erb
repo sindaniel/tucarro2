@@ -147,12 +147,16 @@
             </div>
           </div>
 
+
+
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :ubicacionplaca, 'Ubicacion placa' %>
-              <%= f.text_field :ubicacionplaca, :class =>'form-control'  %>
+              <%= f.label :scraps_truck_id, 'Chatarrización' %>
+              <%= f.collection_select :scraps_truck_id, ScrapsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
+
+
 
         </div>
 
@@ -161,8 +165,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :color, 'Color' %>
-              <%= f.text_field :color, :class =>'form-control'  %>
+              <%= f.label :colors_truck_id, 'Color' %>
+              <%= f.collection_select :colors_truck_id, ColorsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
 
@@ -175,19 +179,41 @@
         </div>
 
 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :contracts_truck_id, 'Poliza' %>
+              <%= f.collection_select :contracts_truck_id, ContractsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :wheels_truck_id, 'Quinta Rueda' %>
+              <%= f.collection_select :wheels_truck_id, WheelsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
 
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :marcamotor, 'Marca motor' %>
-              <%= f.text_field :marcamotor, :class =>'form-control'  %>
+              <%= f.label :motors_truck_id, 'Marca motor' %>
+              <%= f.collection_select :motors_truck_id, MotorsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :marcacaja, 'Marca caja' %>
-              <%= f.text_field :marcacaja, :class =>'form-control'  %>
+              <%= f.label :boxex_truck_id, 'Marca caja' %>
+              <%= f.collection_select :boxex_truck_id, BoxesTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
         </div>
@@ -197,15 +223,15 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :marcatransmision, 'Marca transmision' %>
-              <%= f.text_field :marcatransmision, :class =>'form-control'  %>
+              <%= f.label :transmissions_truck_id, 'Marca transmision' %>
+              <%= f.collection_select :transmissions_truck_id, TransmissionsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
-              <%= f.label :tipocupo, 'Tipo Cupo' %>
-              <%= f.text_field :tipocupo, :class =>'form-control'  %>
+              <%= f.label :spaces_truck_id, 'Tipo Cupo' %>
+              <%= f.collection_select :spaces_truck_id, SpacesTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
             </div>
           </div>
         </div>
@@ -301,10 +327,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
-            <label>
-              <%= f.check_box :quintarueda  %> Quinta rueda
-            </label>
-            <br/>
+
             <label>
               <%= f.check_box :trailer  %> Trailer
             </label>

@@ -3,8 +3,16 @@ class Admin::TrucksController < ApplicationController
   layout  'admin/layouts/application'
   add_breadcrumb 'Camiones', :admin_trucks_path, :options => { :title =>'Inicio' }
 
+
+
   def index
     @trucks = Truck.all
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @trucks, :include =>[:state, :type_truck, :brand_truck] }
+    end
+
+
   end
   def show
 
@@ -38,6 +46,8 @@ class Admin::TrucksController < ApplicationController
 
     @truck = Truck.find(params[:id])
 
+    @truck.picture1.destroy
+
     if @truck.update_attributes(allowed_params)
       flash[:notice] = 'Información actualizada correctamente'
       redirect_to admin_trucks_path
@@ -49,8 +59,6 @@ class Admin::TrucksController < ApplicationController
   end
 
   def destroy
-
-
     @truck = Truck.find(params[:id])
     if @truck.destroy
       flash[:notice] = 'Información eliminada correctamente'
@@ -58,6 +66,26 @@ class Admin::TrucksController < ApplicationController
     else
       render 'new'
     end
+  end
+
+
+
+  def removePicture
+
+    imagen =  params[:imagen]
+    id =  params[:idTruck]
+
+    @truck = Truck.find(id)
+    @truck.instance_eval('picture'+imagen).destroy
+    if @truck.save
+      respuesta = [:respuesta=>true ]
+    else
+      respuesta = [:respuesta=>false ]
+    end
+
+
+    render json: respuesta
+
 
 
 
@@ -80,4 +108,7 @@ class Admin::TrucksController < ApplicationController
     #params.require(:truck).permit(:nombre, :quintarueda)
       params.require(:truck).permit!
   end
+
+
+
 end

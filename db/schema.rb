@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518000256) do
+ActiveRecord::Schema.define(version: 20150518045357) do
+
+  create_table "boxes_trucks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "brand_extras", force: true do |t|
     t.string   "name"
@@ -106,6 +112,12 @@ ActiveRecord::Schema.define(version: 20150518000256) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "motors_trucks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pictures", force: true do |t|
@@ -227,11 +239,23 @@ ActiveRecord::Schema.define(version: 20150518000256) do
     t.datetime "picture5_updated_at"
   end
 
+  create_table "spaces_trucks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "states", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link_rewrite"
+  end
+
+  create_table "transmissions_trucks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "trucks", force: true do |t|
@@ -280,7 +304,7 @@ ActiveRecord::Schema.define(version: 20150518000256) do
     t.datetime "updated_at"
     t.integer  "state_id"
     t.integer  "city_id"
-    t.float    "price",                 limit: 24
+    t.float    "price",                  limit: 24
     t.string   "link_rewrite"
     t.string   "picture1_file_name"
     t.string   "picture1_content_type"
@@ -303,9 +327,17 @@ ActiveRecord::Schema.define(version: 20150518000256) do
     t.integer  "picture5_file_size"
     t.datetime "picture5_updated_at"
     t.text     "descripccion"
-    t.integer  "active",                           default: 1
+    t.integer  "active",                            default: 1
     t.integer  "placa_city_id"
     t.integer  "placa_state_id"
+    t.integer  "wheels_truck_id"
+    t.integer  "colors_truck_id"
+    t.integer  "spaces_truck_id"
+    t.integer  "transmissions_truck_id"
+    t.integer  "scraps_truck_id"
+    t.integer  "contracts_truck_id"
+    t.integer  "boxes_truck_id"
+    t.integer  "motors_truck_id"
   end
 
   create_table "type_extras", force: true do |t|

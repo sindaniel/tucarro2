@@ -10,6 +10,8 @@ class Admin::DashboardController < ApplicationController
 
   def updatestate
 
+    puts params[:type]
+
     if(params[:type] == 'service')
       @item = Service.find(params[:iditem])
       if(params[:idstate] == '0')
@@ -25,15 +27,17 @@ class Admin::DashboardController < ApplicationController
 
 
     if(params[:type] == 'truck')
-      @item = Truck.find(params[:iditem])
+      item = Truck.find(params[:iditem])
+      puts item
       if(params[:idstate] == '0')
-        @item.active = 1
+        item.update_attribute(:active, 1)
       else
-        @item.active = 0
+        item.update_attribute(:active, 0)
       end
-      if @item.save
-        redirect_to admin_trucks_path
+      if item.save
+
       end
+      redirect_to admin_trucks_path
     end
 
 
@@ -49,6 +53,7 @@ class Admin::DashboardController < ApplicationController
         redirect_to admin_extras_path
       end
     end
+
 
   end
 end

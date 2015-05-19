@@ -147,78 +147,102 @@
 
 
 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :placa, 'Placa' %>
+            <%= f.text_field :placa, :class =>'form-control'  %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :placa, 'Placa' %>
-          <%= f.text_field :placa, :class =>'form-control'  %>
+
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :scraps_truck_id, 'Chatarrización' %>
+            <%= f.collection_select :scraps_truck_id, ScrapsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :colors_truck_id, 'Color' %>
+            <%= f.collection_select :colors_truck_id, ColorsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :tipocombustible, 'Tipo combustible' %>
+            <%= f.select(:tipocombustible, [['Gasolina', 0], ['Gas', 1], ['ACPM', 2]], {include_blank: 'Selecccione'}, { :class => 'form-control' }) %>
+          </div>
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :ubicacionplaca, 'Ubicacion placa' %>
-          <%= f.text_field :ubicacionplaca, :class =>'form-control'  %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :contracts_truck_id, 'Poliza' %>
+            <%= f.collection_select :contracts_truck_id, ContractsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :wheels_truck_id, 'Quinta Rueda' %>
+            <%= f.collection_select :wheels_truck_id, WheelsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :motors_truck_id, 'Marca motor' %>
+            <%= f.collection_select :motors_truck_id, MotorsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :boxes_truck_id, 'Marca caja' %>
+            <%= f.collection_select :boxes_truck_id, BoxesTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
         </div>
       </div>
 
-    </div>
 
 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :transmissions_truck_id, 'Marca transmision' %>
+            <%= f.collection_select :transmissions_truck_id, TransmissionsTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :color, 'Color' %>
-          <%= f.text_field :color, :class =>'form-control'  %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :spaces_truck_id, 'Tipo Cupo' %>
+            <%= f.collection_select :spaces_truck_id, SpacesTruck.order(:name),:id,:name, {prompt: 'Selecccione'}, {class: 'form-control'} %>
+          </div>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :tipocombustible, 'Tipo combustible' %>
-          <%= f.select(:tipocombustible, [['Gasolina', 0], ['Gas', 1], ['ACPM', 2]], {include_blank: 'Selecccione'}, { :class => 'form-control' }) %>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :marcamotor, 'Marca motor' %>
-          <%= f.text_field :marcamotor, :class =>'form-control'  %>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :marcacaja, 'Marca caja' %>
-          <%= f.text_field :marcacaja, :class =>'form-control'  %>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :marcatransmision, 'Marca transmision' %>
-          <%= f.text_field :marcatransmision, :class =>'form-control'  %>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= f.label :tipocupo, 'Tipo Cupo' %>
-          <%= f.text_field :tipocupo, :class =>'form-control'  %>
-        </div>
-      </div>
-    </div>
-
 
 
     <div class="row">
@@ -398,6 +422,8 @@
 
           <% if @truck.picture1.to_s  != '/images/missing.png' %>
               <%= image_tag @truck.picture1(:home ), :class=>'img-thumbnail img-responsive' %>
+
+              <%= link_to 'Eliminar Imagen', admin_removePicture_path('1', @truck.id), :class=>'removePicture' %>
           <% end %>
         </div>
       </div>
@@ -408,7 +434,8 @@
           <%= f.file_field :picture2, :class =>'form-control'  %>
 
           <% if @truck.picture2.to_s  != '/images/missing.png' %>
-              <%= image_tag @truck.picture2(:home ), :class=>'img-thumbnail img-responsive' %>
+              <%= image_tag @truck.picture2(:medium ), :class=>'img-thumbnail img-responsive' %>
+              <%= link_to 'Eliminar Imagen', admin_removePicture_path('2', @truck.id), :class=>'removePicture' %>
           <% end %>
 
         </div>
@@ -419,7 +446,8 @@
           <%= f.label :picture3, 'Imagen 3' %>
           <%= f.file_field :picture3, :class =>'form-control'  %>
           <% if @truck.picture3.to_s  != '/images/missing.png' %>
-              <%= image_tag @truck.picture3(:home ), :class=>'img-thumbnail img-responsive' %>
+              <%= image_tag @truck.picture3(:medium ), :class=>'img-thumbnail img-responsive' %>
+              <%= link_to 'Eliminar Imagen', admin_removePicture_path('3', @truck.id), :class=>'removePicture' %>
           <% end %>
 
         </div>
@@ -432,7 +460,8 @@
 
 
           <% if @truck.picture4.to_s  != '/images/missing.png' %>
-              <%= image_tag @truck.picture4(:home ), :class=>'img-thumbnail img-responsive' %>
+              <%= image_tag @truck.picture4(:medium ), :class=>'img-thumbnail img-responsive' %>
+              <%= link_to 'Eliminar Imagen', admin_removePicture_path('4', @truck.id), :class=>'removePicture' %>
           <% end %>
 
 
@@ -446,7 +475,8 @@
 
 
           <% if @truck.picture5.to_s  != '/images/missing.png' %>
-              <%= image_tag @truck.picture5(:home ), :class=>'img-thumbnail img-responsive' %>
+              <%= image_tag @truck.picture5(:medium ), :class=>'img-thumbnail img-responsive' %>
+              <%= link_to 'Eliminar Imagen', admin_removePicture_path('5', @truck.id), :class=>'removePicture' %>
           <% end %>
         </div>
       </div>
@@ -469,8 +499,39 @@
 
 
 <script>
+
+    $('.removePicture').click(function(){
+
+
+        var txt;
+        var r = confirm("Desea eliminar esta imagen de forma permanten");
+        if (r == true) {
+            url = $(this).attr('href');
+
+            imagen = $(this).parent().find('img')
+            link = $(this)
+
+            $.get( url, function( data ) {
+                imagen.hide()
+                link.hide()
+            });
+        }
+
+
+
+
+        return false;
+    })
+
+
+
     var ready;
     ready = function() {
+
+
+
+
+
         //evento cuando carga
         $('#truck_state_id').on('change', function() {
 

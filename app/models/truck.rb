@@ -4,27 +4,80 @@ class Truck < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
 
+  belongs_to :colors_truck
+  belongs_to :spaces_truck
+  belongs_to :boxes_truck
+  belongs_to :contracts_truck
+  belongs_to :scraps_truck
+  belongs_to :wheels_truck
+  belongs_to :motors_truck
+  belongs_to :transmissions_truck
 
 
 
 
 
 
-  has_attached_file :picture1, :styles => {:home => '548x300>', :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
-  validates_attachment_content_type :picture1, :content_type => /\Aimage\/.*\Z/
 
 
-  has_attached_file :picture2, :styles => {:home => '548x300>', :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
-  validates_attachment_content_type :picture2, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :picture3, :styles => {:home => '548x300>', :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
-  validates_attachment_content_type :picture3, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :picture4, :styles => {:home => '548x300>', :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
-  validates_attachment_content_type :picture4, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :picture1, :styles =>  {:home => '900x900>', :medium => "600x600>", :thumb => '204x244'}, :default_url => "/images/missing.png",
+                    :processor => "mini_magick",
+                    :convert_options => {
+                        :thumb => "-background white -compose Copy -gravity center -extent 204x244",
+                        :medium => "-background white -compose Copy -gravity center -extent 600x600",
+                        :home => "-background white -compose Copy -gravity center -extent 900x900"
+                    }
+  validates_attachment_content_type :picture1, :content_type => /\Aimage\/.*\Z/, :less_than => 1.megabytes
 
-  has_attached_file :picture5, :styles => {:home => '548x300>', :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
-  validates_attachment_content_type :picture5, :content_type => /\Aimage\/.*\Z/
+
+
+
+  has_attached_file :picture2, :styles =>  {:home => '900x900>', :medium => "600x600>", :thumb => '204x244'}, :default_url => "/images/missing.png",
+                    :processor => "mini_magick",
+                    :convert_options => {
+                        :thumb => "-background white -compose Copy -gravity center -extent 204x244",
+                        :medium => "-background white -compose Copy -gravity center -extent 600x600",
+                        :home => "-background white -compose Copy -gravity center -extent 900x900"
+                    }
+  validates_attachment_content_type :picture2, :content_type => /\Aimage\/.*\Z/, :less_than => 1.megabytes
+
+
+  has_attached_file :picture3, :styles =>  {:home => '900x900>', :medium => "600x600>", :thumb => '204x244'}, :default_url => "/images/missing.png",
+                    :processor => "mini_magick",
+                    :convert_options => {
+                        :thumb => "-background white -compose Copy -gravity center -extent 204x244",
+                        :medium => "-background white -compose Copy -gravity center -extent 600x600",
+                        :home => "-background white -compose Copy -gravity center -extent 900x900"
+                    }
+  validates_attachment_content_type :picture3, :content_type => /\Aimage\/.*\Z/, :less_than => 1.megabytes
+
+
+  has_attached_file :picture4, :styles =>  {:home => '900x900>', :medium => "600x600>", :thumb => '204x244'}, :default_url => "/images/missing.png",
+                    :processor => "mini_magick",
+                    :convert_options => {
+                        :thumb => "-background white -compose Copy -gravity center -extent 204x244",
+                        :medium => "-background white -compose Copy -gravity center -extent 600x600",
+                        :home => "-background white -compose Copy -gravity center -extent 900x900"
+                    }
+  validates_attachment_content_type :picture4, :content_type => /\Aimage\/.*\Z/, :less_than => 1.megabytes
+
+
+  has_attached_file :picture5, :styles =>  {:home => '900x900>', :medium => "600x600>", :thumb => '204x244'}, :default_url => "/images/missing.png",
+                    :processor => "mini_magick",
+                    :convert_options => {
+                        :thumb => "-background white -compose Copy -gravity center -extent 204x244",
+                        :medium => "-background white -compose Copy -gravity center -extent 600x600",
+                        :home => "-background white -compose Copy -gravity center -extent 900x900"
+                    }
+  validates_attachment_content_type :picture5, :content_type => /\Aimage\/.*\Z/, :less_than => 1.megabytes
+
+
+
+
+
+
 
 
 
@@ -39,7 +92,7 @@ class Truck < ActiveRecord::Base
   validates :estado, presence: true
   validates :placa, presence: true
   validates :tipocombustible, presence: true
-  validates :color, presence: true
+  validates :colors_truck_id, presence: true
   validates :placa_city_id, presence: true
 
   validates :placa_state_id, presence: true

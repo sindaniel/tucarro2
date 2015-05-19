@@ -7,6 +7,7 @@
   <% javascript_include_tag 'application' %>
   <%= javascript_include_tag 'admin/js/jquery' %>
   <%= javascript_include_tag 'admin/js/bootstrap.min' %>
+  <%= javascript_include_tag 'admin/angular.min' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag 'admin/bootstrap.min' %>
@@ -18,7 +19,7 @@
 <body>
 
 
-<div id="wrapper">
+<div id="wrapper" ng-app="camionApp">
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -171,6 +172,23 @@
 
           <li>
             <%= link_to 'Quinta Rueda', admin_wheels_truck_index_path %>
+          </li>
+
+          <li>
+            <%= link_to 'Tipo Cupo', admin_spaces_truck_index_path %>
+          </li>
+
+          <li>
+            <%= link_to 'Marcas Motor', admin_motors_truck_index_path %>
+          </li>
+
+
+          <li>
+            <%= link_to 'Marcas Caja', admin_boxes_truck_index_path %>
+          </li>
+
+          <li>
+            <%= link_to 'Marcas Transmision', admin_transmissions_truck_index_path %>
           </li>
 
 

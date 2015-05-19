@@ -6,7 +6,7 @@ class ContractsTruck < ActiveRecord::Base
   validates :name, presence: true
 
   HUMANIZED_ATTRIBUTES = {
-      :name => 'Nombre del color'
+      :name => 'Nombre de la poliza'
   }
 
   def self.human_attribute_name(attr, options = {})

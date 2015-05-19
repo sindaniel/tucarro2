@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-
   root 'pages#index'
   get 'marcas/:id' => 'pages#getbrands'
   get 'marcas/' => 'pages#getbrands'
@@ -43,7 +41,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
 
-    get '/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
+   # get '/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
+    get '/trucks/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
+    get '/removeImagen/:imagen/:idTruck', to: 'trucks#removePicture', as: 'removePicture'
 
     resources  :trucks,
       :type_truck,
@@ -56,8 +56,11 @@ Rails.application.routes.draw do
       :colors_truck,
       :scraps_truck,
       :contracts_truck,
-      :wheels_truck
-
+      :wheels_truck,
+      :spaces_truck,
+      :motors_truck,
+      :boxes_truck,
+      :transmissions_truck
 
 
     resources :states do

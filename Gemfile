@@ -27,7 +27,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'breadcrumbs_on_rails'
-gem 'kaminari'
 gem 'paperclip'
 gem 'quiet_assets', group: :development
 
