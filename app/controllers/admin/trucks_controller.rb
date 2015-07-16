@@ -46,7 +46,6 @@ class Admin::TrucksController < ApplicationController
 
     @truck = Truck.find(params[:id])
 
-    @truck.picture1.destroy
 
     if @truck.update_attributes(allowed_params)
       flash[:notice] = 'Información actualizada correctamente'

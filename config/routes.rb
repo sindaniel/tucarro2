@@ -1,7 +1,42 @@
 Rails.application.routes.draw do
 
 
+
   root 'pages#index'
+
+  get 'tarifas' => 'pages#tarifas'
+  get 'comprar' => 'pages#comprar'
+
+
+  get 'mi-cuenta' => 'pages#micuenta', :as=> 'micuenta'
+  post 'mi-cuenta' => 'pages#micuenta'
+
+
+
+
+  get 'mi-cuenta/camiones' => 'pages#micamiones', :as=> 'micamiones'
+  get 'mi-cuenta/camiones/agregar' => 'pages#micamionesnew', :as=> 'micamionesnew'
+  post 'mi-cuenta/camiones/agregar' => 'pages#micamionesnew', :as=> 'micamionesnewpost'
+
+
+  get 'mi-cuenta/camiones/editar/:id' => 'pages#micamionesedit', :as=> 'micamionesedit'
+  post 'mi-cuenta/camiones/editar/:id' => 'pages#micamionesedit', :as=> 'micamioneseditpost'
+
+
+  get 'mi-cuenta/repuestos' => 'pages#mirepuestos', :as=> 'mirepuestos'
+  get 'mi-cuenta/servicios' => 'pages#miservicios', :as=> 'miservicios'
+
+
+
+  get 'saveUser' => 'pages#guardarCustomer', :as=> 'saveUser'
+  get 'saveMessage' => 'pages#guardarMensaje', :as=> 'saveMessage'
+
+
+  get 'departamentos/:state_id' => 'pages#departamentos', :as=> 'departamentos'
+
+
+
+
   get 'marcas/:id' => 'pages#getbrands'
   get 'marcas/' => 'pages#getbrands'
 
@@ -43,6 +78,7 @@ Rails.application.routes.draw do
 
    # get '/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
     get '/trucks/updateState/:iditem/:idstate/:type', to: 'dashboard#updatestate', as: 'updateState'
+    get '/updateStateCustomer/:iditem/:idstate', to: 'dashboard#updatestatecustomer', as: 'updateStateCustomer'
     get '/removeImagen/:imagen/:idTruck', to: 'trucks#removePicture', as: 'removePicture'
 
     resources  :trucks,
@@ -60,12 +96,20 @@ Rails.application.routes.draw do
       :spaces_truck,
       :motors_truck,
       :boxes_truck,
-      :transmissions_truck
+      :transmissions_truck,
+    :offers
 
 
     resources :states do
        resources :cities
     end
+
+    resources :customers do
+      resources :offerscustomers
+    end
+
+
+
 
 
   end

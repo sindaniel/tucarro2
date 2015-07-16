@@ -17,280 +17,19 @@
 <div class="homepage-container">
 <div class='row single-product outer-bottom-sm '>
 
-<div class='col-md-3 sidebar'>
-<!-- ================================== TOP NAVIGATION ================================== -->
-<div class="side-menu animate-dropdown outer-bottom-xs">
-  <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> CATEGORIAS PRINCIPALES</div>
-  <nav class="yamm megamenu-horizontal" role="navigation">
-    <ul class="nav">
+  <div class='col-md-3 sidebar'>
+    <!-- ================================== TOP NAVIGATION ================================== -->
+    <%# render 'includes/eliminar' %>
+
+    <%# render 'includes/categoriasmenu' %>
+    <!-- ================================== TOP NAVIGATION : END ================================== -->
+    <div class="sidebar-module-container">
+      <%# render 'includes/buscadoravanzado' %>
+    </div><!-- /.sidebar-module-container -->
+  </div><!-- /.sidebar -->
 
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRACTOMULAS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Tractomula</a></li>
-                  <li><a href="">Minimula</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">VOLQUETAS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Sencilla</a></li>
-                  <li><a href="">Doble Troque</a></li>
-                  <li><a href="">Cuatro Manos</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">CAMIONES</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">1-5 Toneladas</a></li>
-                  <li><a href="">5-10 Toneladas</a></li>
-                  <li><a href="">Sencillo</a></li>
-                  <li><a href="">Doble Troque</a></li>
-                  <li><a href="">Cuatro Manos</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">BUSES</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Microbus</a></li>
-                  <li><a href="">Autobus</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRAILERS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Trailes</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">VANS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Carga</a></li>
-                  <li><a href="">Pasajeros</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
-
-
-
-    </ul><!-- /.nav -->
-  </nav><!-- /.megamenu-horizontal -->
-</div><!-- /.side-menu -->
-<!-- ================================== TOP NAVIGATION : END ================================== -->	            <div class="sidebar-module-container">
-  <h3 class="section-title">Opciones de Busqueda</h3>
-  <div class="sidebar-filter">
-
-    <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-      <div class="widget-header">
-        <h4 class="widget-title">Rango de Precio</h4>
-      </div>
-      <div class="sidebar-widget-body m-t-20">
-        <div class="price-range-holder">
-      	    <span class="min-max">
-                 <span class="pull-left">$80.000.000</span>
-                 <span class="pull-right">$100.000.000</span>
-            </span>
-          <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-
-          <input type="text" class="price-slider" value="" >
-
-        </div><!-- /.price-range-holder -->
-        <a href="#" class="lnk btn btn-primary">Buscar</a>
-      </div><!-- /.sidebar-widget-body -->
-    </div><!-- /.sidebar-widget -->
-
-    <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-    <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
-
-      <div class="sidebar-widget-body m-t-10">
-        <div class="accordion">
-          <div class="widget-header">
-            <h4 class="widget-title">Mas Opciones</h4>
-          </div>
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#modelo" data-toggle="collapse" class="accordion-toggle collapsed">Modelo</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="modelo" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">2008</a></li>
-                <li><a href="#">2007</a></li>
-                <li><a href="#">2006</a></li>
-                <li><a href="#">2005</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#marcas" data-toggle="collapse" class="accordion-toggle collapsed">Marcas</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="marcas" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">Chevrolet</a></li>
-                <li><a href="#">Renult</a></li>
-                <li><a href="#">Foton</a></li>
-                <li><a href="#">JAC</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#ubicacion" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="ubicacion" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">Medellín</a></li>
-                <li><a href="#">El Retiro</a></li>
-                <li><a href="#">Envigado</a></li>
-                <li><a href="#">Rionegro</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#kilometraje" data-toggle="collapse" class="accordion-toggle collapsed">Kilometraje</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="kilometraje" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">0 Km</a></li>
-                <li><a href="#">1 - 25.00 Km</a></li>
-                <li><a href="#">25.000 - 50.000 Km</a></li>
-                <li><a href="#">50.000 - 100.000 Km</a></li>
-                <li><a href="#">Más de 100.000 Km</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#estado" data-toggle="collapse" class="accordion-toggle collapsed">Estado</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="estado" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">Nuevo</a></li>
-                <li><a href="#">Usado</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#placa" data-toggle="collapse" class="accordion-toggle collapsed">Placa</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="placa" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">MCN 942</a></li>
-                <li><a href="#">KJM 558</a></li>
-                <li><a href="#">ZHG 559</a></li>
-                <li><a href="#">JHU 588</a></li>
-                <li><a href="#">JUK 558</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#uplaca" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación Placa</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="uplaca" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">Cundinamarca</a></li>
-                <li><a href="#">Antioquia</a></li>
-                <li><a href="#">Boyaca</a></li>
-                <li><a href="#">Bolivar</a></li>
-                <li><a href="#">Santander</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-
-        </div><!-- /.accordion -->
-      </div><!-- /.sidebar-widget-body -->
-    </div><!-- /.sidebar-widget -->
-    <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
-    <!-- ============================================== PRICE SILDER============================================== -->
-
-    <!-- ============================================== PRICE SILDER : END ============================================== -->
-    <!-- ============================================== MANUFACTURES============================================== -->
-
-    <!-- ============================================== MANUFACTURES: END ============================================== -->
-    <!-- ============================================== COLOR============================================== -->
-
-    <!-- ============================================== COLOR: END ============================================== -->
-    <!-- ============================================== COMPARE============================================== -->
-
-    <!-- ============================================== COMPARE: END ============================================== -->
-    <!-- ============================================== PRODUCT TAGS ============================================== -->
-
-    <!-- ============================================== PRODUCT TAGS : END ============================================== -->		            	<!-- ============================================== COLOR============================================== -->
-    <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-      <div id="advertisement" class="advertisement">
-        <div class="item bg-color">
-          <%= image_tag('bi01.jpg') %>
-        </div><!-- /.item -->
-
-        <div class="item" style="background-image: url('assets/images/advertisement/1.jpg');">
-          <%= image_tag('bi02.jpg') %>
-        </div><!-- /.item -->
-
-        <div class="item bg-color">
-          <%= image_tag('bi03.jpg') %>
-        </div><!-- /.item -->
-
-      </div><!-- /.owl-carousel -->
-    </div>
-
-    <!-- ============================================== COLOR: END ============================================== -->
-
-  </div><!-- /.sidebar-filter -->
-</div><!-- /.sidebar-module-container -->
-</div><!-- /.sidebar -->
-
-
-<div class='col-md-9'>
+<div class='col-md-12'>
 <div class="row  wow fadeInUp">
   <div class="col-xs-12 col-sm-6 col-md-7 gallery-holder">
     <div class="product-item-holder size-big single-product-gallery small-gallery">
@@ -419,6 +158,7 @@
             <div class="module-body outer-top-xs">
               <div class="table-responsive">
                 <table class="table"><tbody>
+
                 <tr class="nymou"><td>Modelo:</td><td class="pull-right"><%= @truck.modelo %></td></tr>
                 <tr class="nymou"><td>Marca:</td><td class="pull-right"><%= @truck.brand_truck.name %></td></tr>
                 <tr class="nymou"><td>Ubicación:</td><td class="pull-right"><%= @truck.state.name %> - <%= @truck.city.name %></td></tr>
@@ -430,8 +170,10 @@
                         Usado
                   <% end %>
                  </td></tr>
+
+
                 <tr class="nymou"><td>Placa:</td><td class="pull-right"><%= @truck.placa.upcase %></td></tr>
-                <tr class="nymou"><td>Ubicación Placa:</td><td class="pull-right"><%= @truck.ubicacionplaca %></td></tr>
+                <tr class="nymou"><td>Ubicación Placa:</td><td class="pull-right"><%=  @ciudad.name %></td></tr>
                 <% if  @truck.colors_truck %>
                 <tr class="nymou"><td>Color:</td><td class="pull-right"><%=  @truck.colors_truck.name %></td></tr>
                 <% end %>
@@ -460,12 +202,12 @@
 
     <div class="description-container m-t-20">
       <h4>Vendedor</h4>
-      <p>Teléfono: <b>3200 002200</b></p>
+      <p>Teléfono: <b><%= @truck.customer.telefono %></b></p>
 
     </div><!-- /.description-container -->
 
     <div class="row outer-top-vs"><div class="cart col-md-12 col-lg-6 clearfix animate-effect">
-      <div class="action"><button type="button" class="btn btn-primary">Contactar</button>
+      <div class="action"><button type="button" id="c" class="btn btn-primary">Contactar</button>
       </div><!-- /.action -->
     </div>
     </div>
@@ -476,7 +218,7 @@
 
   <ul id="product-tabs" class="nav nav-tabs nav-tab-cell-detail">
     <li class="active"><a data-toggle="tab" href="#detalles">DETALLES</a></li>
-    <li><a data-toggle="tab" href="#contactar">CONTACTAR</a></li>
+    <li id="c1"> <a data-toggle="tab" href="#contactar">CONTACTAR</a></li>
   </ul><!-- /.nav-tabs #product-tabs -->
 
   <div class="tab-content outer-top-xs">
@@ -584,24 +326,26 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="exampleInputName">Nombre <span class="astk">*</span></label>
-                    <input type="text" class="form-control txt" id="exampleInputName" placeholder="">
+                    <input type="text" class="form-control txt e" id="nombre" placeholder="" name="nombre">
+                    <input type="hidden" class="form-control" id="exampleInputName" placeholder="" name="tipo" value="1">
+                    <input type="hidden" class="form-control " id="exampleInputName" placeholder="" name="item" value="<%= @truck.id %>">
                   </div><!-- /.form-group -->
                   <div class="form-group">
                     <label for="exampleInputSummary">Teléfono <span class="astk">*</span></label>
-                    <input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
+                    <input type="text" class="form-control txt e" id="telefono" placeholder="" name="telefono">
                   </div><!-- /.form-group -->
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="exampleInputReview">Mensaje <span class="astk">*</span></label>
-                    <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
+                    <textarea class="form-control txt txt-review e" id="mensaje" rows="4" placeholder="" name="mensaje"></textarea>
                   </div><!-- /.form-group -->
                 </div>
               </div><!-- /.row -->
 
               <div class="action text-right">
-                <button class="btn btn-primary btn-upper">ENVIAR CONSULTA</button>
+                <button class="btn btn-primary btn-upper" id="enviarconsulta">ENVIAR CONSULTA</button>
               </div><!-- /.action -->
 
             </form><!-- /.cnt-form -->
@@ -632,3 +376,62 @@
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->		</div><!-- /.homepage-container -->
 </div><!-- /.container -->
 </div>
+
+
+
+
+
+<% content_for :footer do %>
+    <script>
+
+        $(function(){
+
+            $('#c').click(function(){
+                $("#c1 a").trigger("click");
+            });
+
+
+
+            $('.cnt-form').submit(function(){
+                var data = $( ".cnt-form" ).serialize();
+
+                console.log(data)
+
+                $('#enviarconsulta').attr("disabled", "disabled");
+
+
+
+
+
+                $.ajax({
+                    url: '<%= saveMessage_path %>',
+                    error: function() {
+
+                    },
+                    data:data,
+                    success: function(data) {
+                        $('#enviarconsulta').removeAttr("disabled");
+                        alert('Gracias por escribir el vendedor se pondra en contacto con usted')
+                        $('.e').val('')
+                    },
+                    type: 'GET'
+                });
+
+
+
+
+                return false;
+            })
+
+
+
+        })
+
+    </script>
+
+<% end%>
+
+
+
+
+

@@ -428,9 +428,18 @@ $('#transitionType li a').click(function () {
 
             var url = window.location.href;
             if (url.indexOf("_") == -1){
-                window.location  = url+'_precio_'+rango
+                if(window.location.href.includes('_')){
+                    window.location  = url+'_precio_'+rango
+                }else{
+                    window.location  = url+'/_precio_'+rango
+                }
+
             } else{
-                window.location  = url+'_precio_'+rango
+                if(window.location.href.includes('_')){
+                    window.location  = url+'_precio_'+rango
+                }else{
+                    window.location  = url+'/_precio_'+rango
+                }
             }
 
 

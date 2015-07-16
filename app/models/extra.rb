@@ -6,6 +6,8 @@ class Extra < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
 
+  belongs_to :customer
+
 
   validates :name, presence: true
   validates :state_id, presence: true

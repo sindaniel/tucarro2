@@ -8,9 +8,28 @@ class Admin::DashboardController < ApplicationController
   end
 
 
+
+  def updatestatecustomer
+
+
+    @item = Customer.find(params[:iditem])
+    if(params[:idstate] == '0')
+      @item.estado = 1
+    else
+      @item.estado = 0
+    end
+    if @item.save
+      redirect_to admin_customers_path
+    end
+
+
+
+  end
+
+
   def updatestate
 
-    puts params[:type]
+
 
     if(params[:type] == 'service')
       @item = Service.find(params[:iditem])

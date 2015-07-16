@@ -3,6 +3,8 @@ class Truck < ActiveRecord::Base
   belongs_to :type_truck
   belongs_to :city
   belongs_to :state
+  belongs_to :customer
+  has_many :messages, -> { where(tipo: 1)}, :foreign_key => :item
 
   belongs_to :colors_truck
   belongs_to :spaces_truck
@@ -81,6 +83,7 @@ class Truck < ActiveRecord::Base
 
 
 
+=begin
   validates :nombre, presence: true
   validates :modelo, presence: true
   validates :brand_truck_id, presence: true
@@ -96,6 +99,8 @@ class Truck < ActiveRecord::Base
   validates :placa_city_id, presence: true
 
   validates :placa_state_id, presence: true
+  validates :contracts_truck_id, presence: true
+=end
 
 
 
@@ -134,7 +139,7 @@ class Truck < ActiveRecord::Base
 
   before_update do
 
-    self.link_rewrite = self.nombre.downcase
+    self.link_rewrite = self.nombre
     self.link_rewrite = I18n.transliterate(self.link_rewrite)
 
     if self.nombre.count(' ') >= 1

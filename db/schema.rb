@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518045357) do
+ActiveRecord::Schema.define(version: 20150716102731) do
 
   create_table "boxes_trucks", force: true do |t|
     t.string   "name"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 20150518045357) do
     t.datetime "updated_at"
   end
 
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.string   "cedula"
+    t.string   "telefono"
+    t.string   "email"
+    t.string   "clave"
+    t.integer  "typeuser"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "estado",     default: 1
+  end
+
   create_table "extras", force: true do |t|
     t.string   "name"
     t.float    "price",                 limit: 24
@@ -102,6 +114,7 @@ ActiveRecord::Schema.define(version: 20150518045357) do
     t.datetime "picture5_updated_at"
     t.integer  "type_truck_id"
     t.integer  "active",                           default: 1
+    t.integer  "customer_id"
   end
 
   create_table "images", force: true do |t|
@@ -114,8 +127,37 @@ ActiveRecord::Schema.define(version: 20150518045357) do
     t.datetime "image_updated_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.string   "nombre"
+    t.string   "telefono"
+    t.text     "mensaje"
+    t.integer  "tipo"
+    t.integer  "item"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "motors_trucks", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "offercustomers", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "offer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "offers", force: true do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.string   "precio1"
+    t.string   "precio2"
+    t.integer  "trucks",      default: 0
+    t.integer  "service",     default: 0
+    t.integer  "extra",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -237,6 +279,7 @@ ActiveRecord::Schema.define(version: 20150518045357) do
     t.string   "picture5_content_type"
     t.integer  "picture5_file_size"
     t.datetime "picture5_updated_at"
+    t.integer  "customer_id"
   end
 
   create_table "spaces_trucks", force: true do |t|
@@ -338,6 +381,7 @@ ActiveRecord::Schema.define(version: 20150518045357) do
     t.integer  "contracts_truck_id"
     t.integer  "boxes_truck_id"
     t.integer  "motors_truck_id"
+    t.integer  "customer_id"
   end
 
   create_table "type_extras", force: true do |t|

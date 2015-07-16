@@ -3,10 +3,290 @@ class PagesController < ApplicationController
 
 
   def index
-
     @types = TypeTruck.all
+  end
+
+
+  def tarifas
+    @planes = Offer.all
+  end
+
+
+  def departamentos
+
+
+    @cities = City.where(state_id: params[:state_id]).order(:name).all
+    @state = State.find_by_id(params[:state_id])
+
+    render :json => @cities
+
+
+
+
+
 
   end
+
+
+
+
+  def comprar
+
+    if params[:plan].nil?
+      redirect_to tarifas_path
+    else
+      @plan = Offer.find_by_id(params[:plan])
+      if @plan.blank?
+        redirect_to tarifas_path
+      end
+    end
+
+
+
+  end
+
+
+
+  def guardarMensaje
+
+
+
+    o = Message.new(
+        :nombre => params[:nombre],
+        :telefono => params[:telefono],
+        :mensaje => params[:mensaje],
+        :tipo => params[:tipo],
+        :item => params[:item]
+    )
+    if o.save
+
+    data = [:estado => 'si']
+    render json: data
+
+
+    end
+
+  end
+
+  def guardarCustomer
+
+
+    if Customer.find_by_email(params[:email])
+      data = [:estado => 'si']
+    else
+      data = [:estado => 'no']
+
+      o = Customer.new(
+          :name => params[:name],
+          :cedula => params[:cedula],
+          :telefono => params[:telefono],
+          :clave => params[:clave],
+          :email => params[:email],
+          :typeuser =>  0
+      )
+      if o.save
+
+        plancliente = Offercustomer.new
+
+        plancliente.customer_id = o.id
+        plancliente.offer_id = params[:plan]
+
+        if plancliente.save
+
+          session[:user] = o.id
+          data = [:guardoplan => 'si']
+        end
+
+      end
+
+    end
+
+
+    render json: data
+  end
+
+
+
+  def micamiones
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+      @user = Customer.find_by_id(session[:user])
+      @trucks = Truck.where(:customer_id => session[:user])
+
+      render :layout => 'layouts/cliente'
+    end
+  end
+
+
+
+  def micamionesnew
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      @truck = Truck.new
+
+
+
+      if request.post?
+
+        params[:truck][:customer_id] = session[:user]
+        @truck = Truck.new(allowed_params)
+        if @truck.save
+          flash[:notice] = 'Información agregada correctamente'
+          redirect_to micamiones_path
+        else
+          render 'new'
+        end
+
+
+
+
+      else
+        render :layout => 'layouts/cliente'
+      end
+
+
+
+
+    end
+  end
+
+
+
+  def micamionesedit
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      @truck = Truck.where(:id => params[:id], :customer_id => session[:user]).first
+
+
+      if @truck.blank?
+        redirect_to micamiones_path
+      else
+
+
+
+        if request.post?
+
+          if @truck.update_attributes(allowed_params)
+            flash[:notice] = 'Información actualizada correctamente'
+            redirect_to micamiones_path
+          else
+            flash[:notice] = 'Informasssción actualizada correctamente'
+            redirect_to micamiones_path
+          end
+        else
+          render :layout => 'layouts/cliente'
+        end
+
+
+
+
+
+
+
+      end
+
+
+
+
+    end
+  end
+
+
+
+
+  def mirepuestos
+
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      render :layout => 'layouts/cliente'
+
+
+
+    end
+
+  end
+
+
+
+  def miservicios
+
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      render :layout => 'layouts/cliente'
+
+
+
+    end
+
+
+  end
+
+
+
+
+  def micuenta
+
+
+
+
+  if session[:user].nil?
+
+      @message = false
+      if request.post?
+        @usuario = Customer.where('email = ? and clave = ?', params[:email], params[:clave])
+
+        if @usuario.count == 0
+          @message = true
+          flash[:notice] = ' Email o Clave invalida'
+        else
+          session[:user] = @usuario[0].id
+
+
+        end
+        redirect_to micuenta_path
+      else
+        render :action => 'micuentalogin', :layout => 'layouts/devise'
+      end
+
+  else
+
+    @user = Customer.find_by_id(session[:user])
+    @offers = Offercustomer.where(:customer_id => session[:user])
+
+
+    @publicaciones  = Customer.find_by_sql('(SELECT id, nombre, created_at, 1 as tipo FROM trucks WHERE customer_id='+session[:user].to_s+')
+UNION
+(SELECT id,  name, created_at as nombre, 2 as tipo FROM services WHERE customer_id='+session[:user].to_s+')
+UNION
+(SELECT id, name, created_at as nombre, 3 as tipo  FROM extras WHERE customer_id='+session[:user].to_s+')
+ORDER BY created_at DESC')
+
+
+
+    render :action => 'micuenta', :layout => 'layouts/cliente'
+  end
+
+
+
+  end
+
+
+
+
+
 
 
   def getbrands
@@ -928,7 +1208,11 @@ SUM(CASE WHEN kilometraje >100000 THEN 1 ELSE 0 END) AS price_range_5').
 
 
   def camion
+
+
     @truck = Truck.find_by_id(params[:id])
+
+    @ciudad = City.find_by_id(@truck.placa_city_id)
   end
 
 
@@ -1025,4 +1309,11 @@ SUM(CASE WHEN kilometraje >100000 THEN 1 ELSE 0 END) AS price_range_5').
   def servicio
     @service = Service.find_by_id(params[:id])
   end
+
+
+
+    private
+    def allowed_params
+      params.require(:truck).permit!
+    end
 end
