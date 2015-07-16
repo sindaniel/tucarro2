@@ -46,6 +46,9 @@ class PagesController < ApplicationController
     else
 
       @plan = Offer.find_by_id(params[:plan])
+      if !session[:user].nil?
+        @user = Customer.find_by_id(session[:user])
+      end
       if @plan.blank?
         redirect_to tarifas_path
       end

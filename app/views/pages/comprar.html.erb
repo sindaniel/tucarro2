@@ -4,7 +4,7 @@
 
    def calculuarPrecio
 
-     if !session[:user].nil?
+     if session[:user].nil?
         @plan.precio1
      else
        if @user.typeuser == 0
