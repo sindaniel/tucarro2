@@ -511,6 +511,9 @@ ORDER BY created_at DESC')
 
 
 
+    @banners = Banner.all.order('rand()').limit(3)
+    @tiposCaminiones = TypeTruck.all
+
 
 
     if(params[:param1].nil? && params[:param2].nil? && params[:param3].nil?)

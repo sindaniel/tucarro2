@@ -54,6 +54,8 @@
                 <%= type.name %>
               </td>
               <td>
+
+                <%= link_to 'Agregar subtipos', admin_type_truck_sub_trucks_path(type.id), :class=>'btn btn-info' %>
                 <%= link_to 'Editar', edit_admin_type_truck_path(type.id), :class=>'btn btn-info' %>
                 <%= link_to 'Eliminar', {:controller => 'admin/type_truck', :action => 'destroy', :id => type.id}, :data => {:confirm => 'Estas seguro de eliminar este elemento?'}, :method => 'DELETE',  :class=>'btn btn-danger' %>
               </td>

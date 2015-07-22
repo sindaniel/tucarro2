@@ -12,9 +12,22 @@ class Admin::OfferscustomersController < ApplicationController
   end
 
   def new
+
+    @offer = Offercustomer.new
+
   end
 
   def create
+
+    params[:offercustomer][:customer_id] =  params[:customer_id]
+    @offer = Offercustomer.new(allowed_params)
+    if @offer.save
+      flash[:notice] = 'Información agregada correctamente'
+      redirect_to admin_customers_path
+    else
+      render 'new'
+    end
+
   end
 
   def edit
@@ -24,5 +37,11 @@ class Admin::OfferscustomersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def allowed_params
+    #params.require(:truck).permit(:nombre, :quintarueda)
+    params.require(:offercustomer).permit!
   end
 end

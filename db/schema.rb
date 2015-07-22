@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716102731) do
+ActiveRecord::Schema.define(version: 20150722191733) do
+
+  create_table "addpicturetobanners", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "banners", force: true do |t|
+    t.string   "name"
+    t.integer  "type_truck_id"
+    t.date     "limite"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
 
   create_table "boxes_trucks", force: true do |t|
     t.string   "name"
@@ -295,6 +313,13 @@ ActiveRecord::Schema.define(version: 20150716102731) do
     t.string   "link_rewrite"
   end
 
+  create_table "sub_trucks", force: true do |t|
+    t.string   "name"
+    t.integer  "type_truck_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "transmissions_trucks", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -382,6 +407,7 @@ ActiveRecord::Schema.define(version: 20150716102731) do
     t.integer  "boxes_truck_id"
     t.integer  "motors_truck_id"
     t.integer  "customer_id"
+    t.integer  "sub_truck_id"
   end
 
   create_table "type_extras", force: true do |t|

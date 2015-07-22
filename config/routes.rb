@@ -2,6 +2,30 @@ Rails.application.routes.draw do
 
 
 
+  namespace :admin do
+  get 'sub_trucks/index'
+  end
+
+  namespace :admin do
+  get 'sub_trucks/new'
+  end
+
+  namespace :admin do
+  get 'sub_trucks/create'
+  end
+
+  namespace :admin do
+  get 'sub_trucks/edit'
+  end
+
+  namespace :admin do
+  get 'sub_trucks/update'
+  end
+
+  namespace :admin do
+  get 'sub_trucks/destroy'
+  end
+
   root 'pages#index'
 
   get 'tarifas' => 'pages#tarifas'
@@ -82,7 +106,6 @@ Rails.application.routes.draw do
     get '/removeImagen/:imagen/:idTruck', to: 'trucks#removePicture', as: 'removePicture'
 
     resources  :trucks,
-      :type_truck,
       :brands_truck,
       :brand_extra,
       :type_extra,
@@ -97,7 +120,8 @@ Rails.application.routes.draw do
       :motors_truck,
       :boxes_truck,
       :transmissions_truck,
-    :offers
+      :offers,
+      :banners
 
 
     resources :states do
@@ -106,6 +130,10 @@ Rails.application.routes.draw do
 
     resources :customers do
       resources :offerscustomers
+    end
+
+    resources :type_truck do
+      resources :sub_trucks
     end
 
 

@@ -4,104 +4,39 @@
     <ul class="nav">
 
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRACTOMULAS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Tractomula</a></li>
-                  <li><a href="">Minimula</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">VOLQUETAS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Sencilla</a></li>
-                  <li><a href="">Doble Troque</a></li>
-                  <li><a href="">Cuatro Manos</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">CAMIONES</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">1-5 Toneladas</a></li>
-                  <li><a href="">5-10 Toneladas</a></li>
-                  <li><a href="">Sencillo</a></li>
-                  <li><a href="">Doble Troque</a></li>
-                  <li><a href="">Cuatro Manos</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">BUSES</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Microbus</a></li>
-                  <li><a href="">Autobus</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">TRAILERS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Trailes</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
+      <% @tiposCaminiones.each do |tipo| %>
 
-      <li class="dropdown menu-item">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">VANS</a>
-        <ul class="dropdown-menu mega-menu">
-          <li class="yamm-content">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <ul class="links list-unstyled">
-                  <li><a href="">Carga</a></li>
-                  <li><a href="">Pasajeros</a></li>
-                </ul>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </li><!-- /.yamm-content -->
-        </ul>
-      </li><!-- /.menu-item -->
+
+          <li class="dropdown menu-item">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= tipo.name %></a>
+            <ul class="dropdown-menu mega-menu">
+              <li class="yamm-content">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <ul class="links list-unstyled">
+                      <% tipo.sub_trucks.each do |subtipo| %>
+                          <li><a href=""><%= subtipo.name %></a></li>
+
+                      <% end %>
+
+
+
+                    </ul>
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </li><!-- /.yamm-content -->
+            </ul>
+          </li><!-- /.menu-item -->
+
+
+
+
+
+      <% end %>
 
 
 

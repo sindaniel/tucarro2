@@ -232,17 +232,15 @@
 
   <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
     <div id="advertisement" class="advertisement">
-      <div class="item bg-color">
-        <%= image_tag('bi01.jpg') %>
-      </div><!-- /.item -->
 
-      <div class="item">
-        <%= image_tag('bi02.jpg') %>
-      </div><!-- /.item -->
+      <% @banners.each do |banner| %>
+          <div class="item bg-color">
+            <%= image_tag('bi01.jpg') %>
+            <%= image_tag banner.picture(:medium ), :class=>'img-thumbnail img-responsive' %>
+          </div><!-- /.item -->
+          <% end %>
 
-      <div class="item bg-color">
-        <%= image_tag('bi03.jpg') %>
-      </div><!-- /.item -->
+    
 
     </div><!-- /.owl-carousel -->
   </div>
