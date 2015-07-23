@@ -2,29 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  namespace :admin do
-  get 'sub_trucks/index'
-  end
 
-  namespace :admin do
-  get 'sub_trucks/new'
-  end
-
-  namespace :admin do
-  get 'sub_trucks/create'
-  end
-
-  namespace :admin do
-  get 'sub_trucks/edit'
-  end
-
-  namespace :admin do
-  get 'sub_trucks/update'
-  end
-
-  namespace :admin do
-  get 'sub_trucks/destroy'
-  end
 
   root 'pages#index'
 
@@ -121,7 +99,11 @@ Rails.application.routes.draw do
       :boxes_truck,
       :transmissions_truck,
       :offers,
-      :banners
+      :banners,
+               :marcas_equipos_humedos,
+               :tipo_carrocerias,
+               :marca_carrocerias,
+               :marca_volcos
 
 
     resources :states do
@@ -133,7 +115,8 @@ Rails.application.routes.draw do
     end
 
     resources :type_truck do
-      resources :sub_trucks
+      resources :sub_trucks,
+                :referencias
     end
 
 

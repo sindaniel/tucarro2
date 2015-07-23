@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722191733) do
+ActiveRecord::Schema.define(version: 20150723062004) do
 
   create_table "addpicturetobanners", force: true do |t|
     t.datetime "created_at"
@@ -145,6 +145,24 @@ ActiveRecord::Schema.define(version: 20150722191733) do
     t.datetime "image_updated_at"
   end
 
+  create_table "marca_carroceria", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "marca_equipo_humedos", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "marca_volcos", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", force: true do |t|
     t.string   "nombre"
     t.string   "telefono"
@@ -225,6 +243,13 @@ ActiveRecord::Schema.define(version: 20150722191733) do
     t.integer  "order"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "referencias", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "type_truck_id"
   end
 
   create_table "registers", force: true do |t|
@@ -320,6 +345,12 @@ ActiveRecord::Schema.define(version: 20150722191733) do
     t.datetime "updated_at"
   end
 
+  create_table "tipo_carroceria", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "transmissions_trucks", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -408,6 +439,22 @@ ActiveRecord::Schema.define(version: 20150722191733) do
     t.integer  "motors_truck_id"
     t.integer  "customer_id"
     t.integer  "sub_truck_id"
+    t.string   "pesobruto"
+    t.integer  "referecia_id"
+    t.string   "marcacapa"
+    t.string   "tipotrailer"
+    t.string   "marcatrailer"
+    t.string   "modelotrailer"
+    t.string   "numeroejestrailer"
+    t.string   "sevendecontrailer"
+    t.string   "direccion"
+    t.integer  "marca_equipo_humedo_id"
+    t.integer  "tipo_carroceria_id"
+    t.integer  "marca_carroceria_id"
+    t.integer  "marca_volco_id"
+    t.string   "capacidadmetrica"
+    t.string   "cuantosmetroscubicos"
+    t.string   "Autocarpado"
   end
 
   create_table "type_extras", force: true do |t|
