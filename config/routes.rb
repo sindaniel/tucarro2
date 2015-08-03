@@ -103,7 +103,8 @@ Rails.application.routes.draw do
                :marcas_equipos_humedos,
                :tipo_carrocerias,
                :marca_carrocerias,
-               :marca_volcos
+               :marca_volcos,
+               :houses
 
 
     resources :states do

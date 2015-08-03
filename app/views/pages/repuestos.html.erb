@@ -309,7 +309,7 @@
                           <h3 class="name"><a href="#"><%= extra.name %></a></h3>
                           <div class="description"><%= extra.city.name %> | <%= extra.state.name %></div>
                           <div class="product-price">
-                            <span class="price"><%= number_to_currency( extra.price) %></span>
+                            <span class="price"><%= number_to_currency( extra.price,  precision: 0, delimiter: '.') %></span>
                           </div><!-- /.product-price -->
                         </div><!-- /.product-info -->
                         <div class="cart clearfix animate-effect">
@@ -350,7 +350,7 @@
       <div class="text-right">
         <div class="pagination-container">
           <% if !@extras.nil? %>
-              <%= paginate @extras %>
+              <% # paginate @extras %>
           <% end %>
 
 

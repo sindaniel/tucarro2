@@ -10,9 +10,21 @@
 
     <div class="col-md-12 col-sm-12" style="padding:0px !important;">
 
-      <div class="col-md-4 col-sm-4"><a href=""><%= image_tag 'b1.jpg' %></a></div>
-      <div class="col-md-4 col-sm-4"><a href=""><%= image_tag 'b2.jpg' %></a></div>
-      <div class="col-md-4 col-sm-4"><a href=""><%= image_tag 'b1.jpg' %></a></div>
+      <div class="col-md-4 col-sm-4">
+        <a href="<%=  @banners[0].name %>">
+          <%= image_tag @banners[0].picture(:home )  %>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <a href="<%=  @banners[1].name %>">
+          <%= image_tag @banners[1].picture(:home )  %>
+        </a>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <a href="<%=  @banners[2].name %>">
+          <%= image_tag @banners[2].picture(:home )  %>
+        </a>
+      </div>
 
     </div>
 

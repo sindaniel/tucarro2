@@ -9,7 +9,7 @@ class Admin::TrucksController < ApplicationController
     @trucks = Truck.all
     respond_to do |format|
       format.html {}
-      format.json { render json: @trucks, :include =>[:state, :type_truck, :brand_truck] }
+      format.json { render json: @trucks, :include =>[:state, :type_truck, :brand_truck, :customer] }
     end
 
 

@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def index
     @types = TypeTruck.all
+    @banners = House.all
   end
 
 
@@ -222,7 +223,7 @@ class PagesController < ApplicationController
 
       @user = Customer.find_by_id(session[:user])
       render :layout => 'layouts/cliente'
-
+      @extras = Extra.where(:customer_id => session[:user])
 
 
     end

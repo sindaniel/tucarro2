@@ -299,7 +299,7 @@ if ($('.price-slider').length > 0) {
     $('.price-slider').slider({
         min: 100000,
         max: 600000000,
-        step: 1000000,
+        step: 5000000,
         value: [100000, 600000000],
         handle: "square"
 

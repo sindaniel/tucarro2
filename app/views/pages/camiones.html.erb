@@ -52,7 +52,7 @@
                         <h3 class="name"><a href="#"><%= truck.nombre %></a></h3>
                         <div class="description"><%= truck.modelo %> | <%= truck.state.name %></div>
                         <div class="product-price">
-                          <span class="price"><%= number_to_currency( truck.price) %></span>
+                          <span class="price"><%= number_to_currency( truck.price,  precision: 0, delimiter: '.') %></span>
                         </div><!-- /.product-price -->
                       </div><!-- /.product-info -->
                       <div class="cart clearfix animate-effect">
