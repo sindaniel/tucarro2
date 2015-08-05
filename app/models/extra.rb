@@ -8,6 +8,8 @@ class Extra < ActiveRecord::Base
 
   belongs_to :customer
 
+  has_many :messages, -> { where(tipo: 2)}, :foreign_key => :item
+
 
   validates :name, presence: true
   validates :state_id, presence: true

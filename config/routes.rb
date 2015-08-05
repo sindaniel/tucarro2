@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'tarifas' => 'pages#tarifas'
   get 'comprar' => 'pages#comprar'
+  get 'busqueda' => 'pages#busqueda'
+  get 'camion-tipo/:id' => 'pages#camiontipo'
 
 
   get 'mi-cuenta' => 'pages#micuenta', :as=> 'micuenta'
@@ -19,14 +21,29 @@ Rails.application.routes.draw do
   get 'mi-cuenta/camiones' => 'pages#micamiones', :as=> 'micamiones'
   get 'mi-cuenta/camiones/agregar' => 'pages#micamionesnew', :as=> 'micamionesnew'
   post 'mi-cuenta/camiones/agregar' => 'pages#micamionesnew', :as=> 'micamionesnewpost'
-
-
   get 'mi-cuenta/camiones/editar/:id' => 'pages#micamionesedit', :as=> 'micamionesedit'
   post 'mi-cuenta/camiones/editar/:id' => 'pages#micamionesedit', :as=> 'micamioneseditpost'
 
 
+
   get 'mi-cuenta/repuestos' => 'pages#mirepuestos', :as=> 'mirepuestos'
+  get 'mi-cuenta/repuestos/agregar' => 'pages#mirepuestosnew', :as=> 'mirepuestosnew'
+  post 'mi-cuenta/repuestos/agregar' => 'pages#mirepuestosnew', :as=> 'mirepuestosnewpost'
+  get 'mi-cuenta/repuestos/editar/:id' => 'pages#mirepuestosedit', :as=> 'mirepuestosedit'
+  post 'mi-cuenta/repuestos/editar/:id' => 'pages#mirepuestosedit', :as=> 'mirepuestoseditpost'
+
+
   get 'mi-cuenta/servicios' => 'pages#miservicios', :as=> 'miservicios'
+  get 'mi-cuenta/servicios/agregar' => 'pages#miserviciosnew', :as=> 'miserviciosnew'
+  post 'mi-cuenta/servicios/agregar' => 'pages#miserviciosnew', :as=> 'miserviciosnewpost'
+  get 'mi-cuenta/servicios/editar/:id' => 'pages#miserviciosedit', :as=> 'miserviciosedit'
+  post 'mi-cuenta/servicios/editar/:id' => 'pages#miserviciosedit', :as=> 'miservicioseditpost'
+
+
+
+
+
+
 
 
 

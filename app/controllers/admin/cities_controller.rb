@@ -1,6 +1,6 @@
 class Admin::CitiesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:consulta,:index]
   layout  'admin/layouts/application'
   add_breadcrumb 'Departamentos', :admin_states_path, :options => { :title =>'Inicio' }
 

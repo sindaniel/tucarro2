@@ -8,6 +8,22 @@ class PagesController < ApplicationController
   end
 
 
+
+  def camiontipo
+    @trucks = Truck.where(sub_truck_id: params[:id]).order(:nombre).all
+  end
+
+  def busqueda
+
+    @trucks = Truck.where(nombre: params[:consulta]).order(:nombre).all
+    @extras = Extra.where(name: params[:consulta]).order(:name).all
+
+
+    @services = Service.where(name: params[:consulta]).order(:name).all
+
+  end
+
+
   def tarifas
     @planes = Offer.all
 
@@ -142,8 +158,6 @@ class PagesController < ApplicationController
       @user = Customer.find_by_id(session[:user])
       @truck = Truck.new
 
-
-
       if request.post?
 
         params[:truck][:customer_id] = session[:user]
@@ -155,15 +169,9 @@ class PagesController < ApplicationController
           render 'new'
         end
 
-
-
-
       else
         render :layout => 'layouts/cliente'
       end
-
-
-
 
     end
   end
@@ -222,14 +230,39 @@ class PagesController < ApplicationController
     else
 
       @user = Customer.find_by_id(session[:user])
-      render :layout => 'layouts/cliente'
       @extras = Extra.where(:customer_id => session[:user])
+      render :layout => 'layouts/cliente'
 
-
+      puts @extras
     end
-
   end
 
+
+  def mirepuestosnew
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      @extra = Extra.new
+
+      if request.post?
+
+        params[:extra][:customer_id] = session[:user]
+        @extra = Extra.new(allowed_paramsextra)
+        if @extra.save
+          flash[:notice] = 'Información agregada correctamente'
+          redirect_to mirepuestos_path
+        else
+          render 'new'
+        end
+
+      else
+        render :layout => 'layouts/cliente'
+      end
+
+    end
+  end
 
 
   def miservicios
@@ -237,15 +270,53 @@ class PagesController < ApplicationController
     if session[:user].nil?
       redirect_to micuenta_path
     else
-
       @user = Customer.find_by_id(session[:user])
+      @servicios = Service.where(:customer_id => session[:user])
       render :layout => 'layouts/cliente'
-
-
-
     end
 
 
+  end
+
+
+  def miserviciosedit
+
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+      @user = Customer.find_by_id(session[:user])
+      @service = Service.find(params[:id])
+      render :layout => 'layouts/cliente'
+    end
+
+  end
+
+
+
+  def miserviciosnew
+    if session[:user].nil?
+      redirect_to micuenta_path
+    else
+
+      @user = Customer.find_by_id(session[:user])
+      @service = Service.new
+
+      if request.post?
+
+        params[:service][:customer_id] = session[:user]
+        @service = Service.new(allowed_paramsservice)
+        if @service.save
+          flash[:notice] = 'Información agregada correctamente'
+          redirect_to miservicios_path
+        else
+          render 'new'
+        end
+
+      else
+        render :layout => 'layouts/cliente'
+      end
+
+    end
   end
 
 
@@ -1329,8 +1400,18 @@ SUM(CASE WHEN kilometraje >100000 THEN 1 ELSE 0 END) AS price_range_5').
 
 
 
+
     private
     def allowed_params
       params.require(:truck).permit!
+    end
+
+    def allowed_paramsextra
+      params.require(:extra).permit!
+    end
+
+
+    def allowed_paramsservice
+      params.require(:service).permit!
     end
 end

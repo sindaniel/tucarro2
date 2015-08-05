@@ -6,6 +6,9 @@ class Service < ActiveRecord::Base
   belongs_to :customer
 
 
+  has_many :messages, -> { where(tipo: 3)}, :foreign_key => :item
+
+
 
 
 

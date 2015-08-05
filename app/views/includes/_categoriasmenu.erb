@@ -19,7 +19,7 @@
                   <div class="col-sm-12 col-md-12">
                     <ul class="links list-unstyled">
                       <% tipo.sub_trucks.each do |subtipo| %>
-                          <li><a href=""><%= subtipo.name %></a></li>
+                          <li><a href="/camion-tipo/<%= subtipo.id %>"><%= subtipo.name %></a></li>
 
                       <% end %>
 

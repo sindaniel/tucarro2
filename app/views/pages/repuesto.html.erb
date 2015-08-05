@@ -16,144 +16,7 @@
 <div class="homepage-container">
 <div class='row single-product outer-bottom-sm '>
 
-<div class='col-md-3 sidebar'>
-  <!-- ================================== TOP NAVIGATION ================================== -->
-  <div class="side-menu animate-dropdown outer-bottom-xs">
-    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> CATEGORIAS PRINCIPALES</div>
-    <nav class="yamm megamenu-horizontal" role="navigation">
-      <ul class="nav">
-
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Montallantas</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Eléctrico</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Limpieza</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Frenos</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Resortería</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Aire</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Soldadura</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Motor</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Transmisión</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Caja</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Cambio de aceite</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">Clutch</a></li>
-        <!-- /.menu-item -->
-
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle">General mecánica</a></li>
-        <!-- /.menu-item -->
-
-
-
-      </ul><!-- /.nav -->
-    </nav><!-- /.megamenu-horizontal -->
-  </div><!-- /.side-menu -->
-  <!-- ================================== TOP NAVIGATION : END ================================== -->	            <div class="sidebar-module-container">
-  <h3 class="section-title">Opciones de Busqueda</h3>
-  <div class="sidebar-filter">
-
-
-
-    <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-    <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
-
-      <div class="sidebar-widget-body m-t-10">
-        <div class="accordion">
-          <div class="widget-header">
-            <h4 class="widget-title">Mas Opciones</h4>
-          </div>
-
-          <div class="accordion-group"><div class="accordion-heading">
-            <a href="#ubicacion" data-toggle="collapse" class="accordion-toggle collapsed">Ubicación</a>
-          </div><!-- /.accordion-heading -->
-            <div class="accordion-body collapse" id="ubicacion" style="height: 0px;"><div class="accordion-inner">
-              <ul>
-                <li><a href="#">Cundinamarca</a></li>
-                <li><a href="#">Antioquia</a></li>
-                <li><a href="#">Boyaca</a></li>
-                <li><a href="#">Bolivar</a></li>
-                <li><a href="#">Santander</a></li>
-              </ul>
-            </div></div></div><!-- /.accordion-group -->
-
-
-        </div><!-- /.accordion -->
-      </div><!-- /.sidebar-widget-body -->
-    </div><!-- /.sidebar-widget -->
-    <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
-    <!-- ============================================== PRICE SILDER============================================== -->
-
-    <!-- ============================================== PRICE SILDER : END ============================================== -->
-    <!-- ============================================== MANUFACTURES============================================== -->
-
-    <!-- ============================================== MANUFACTURES: END ============================================== -->
-    <!-- ============================================== COLOR============================================== -->
-
-    <!-- ============================================== COLOR: END ============================================== -->
-    <!-- ============================================== COMPARE============================================== -->
-
-    <!-- ============================================== COMPARE: END ============================================== -->
-    <!-- ============================================== PRODUCT TAGS ============================================== -->
-
-    <!-- ============================================== PRODUCT TAGS : END ============================================== -->		            	<!-- ============================================== COLOR============================================== -->
-    <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-      <div id="advertisement" class="advertisement">
-        <div class="item bg-color">
-          <%= image_tag('bi01.jpg') %>
-        </div><!-- /.item -->
-
-        <div class="item" style="background-image: url('assets/images/advertisement/1.jpg');">
-          <%= image_tag('bi02.jpg') %>
-        </div><!-- /.item -->
-
-        <div class="item bg-color">
-          <%= image_tag('bi03.jpg') %>
-        </div><!-- /.item -->
-
-      </div><!-- /.owl-carousel -->
-    </div>
-
-    <!-- ============================================== COLOR: END ============================================== -->
-
-  </div><!-- /.sidebar-filter -->
-</div><!-- /.sidebar-module-container -->
-</div><!-- /.sidebar -->
-
-
-<div class='col-md-9'>
+<div class='col-md-12'>
   <div class="row  wow fadeInUp">
     <div class="col-xs-12 col-sm-6 col-md-7 gallery-holder">
       <div class="product-item-holder size-big single-product-gallery small-gallery">
@@ -315,24 +178,26 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="exampleInputName">Nombre <span class="astk">*</span></label>
-                <input type="text" class="form-control txt" id="exampleInputName" placeholder="">
+                <input type="text" class="form-control txt e" id="nombre" placeholder="" name="nombre">
+                <input type="hidden" class="form-control" id="exampleInputName" placeholder="" name="tipo" value="2">
+                <input type="hidden" class="form-control " id="exampleInputName" placeholder="" name="item" value="<%= @extra.id %>">
               </div><!-- /.form-group -->
               <div class="form-group">
                 <label for="exampleInputSummary">Teléfono <span class="astk">*</span></label>
-                <input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
+                <input type="text" class="form-control txt e" id="telefono" placeholder="" name="telefono">
               </div><!-- /.form-group -->
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label for="exampleInputReview">Mensaje <span class="astk">*</span></label>
-                <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
+                <textarea class="form-control txt txt-review e" id="mensaje" rows="4" placeholder="" name="mensaje"></textarea>
               </div><!-- /.form-group -->
             </div>
           </div><!-- /.row -->
 
           <div class="action text-right">
-            <button class="btn btn-primary btn-upper">ENVIAR CONSULTA</button>
+            <button class="btn btn-primary btn-upper" id="enviarconsulta">ENVIAR CONSULTA</button>
           </div><!-- /.action -->
 
         </form><!-- /.cnt-form -->
@@ -357,3 +222,55 @@
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->		</div><!-- /.homepage-container -->
 </div><!-- /.container -->
 </div><!-- /.body-content -->
+
+
+
+<% content_for :footer do %>
+    <script>
+
+        $(function(){
+
+            $('#c').click(function(){
+                $("#c1 a").trigger("click");
+            });
+
+
+
+            $('.cnt-form').submit(function(){
+                var data = $( ".cnt-form" ).serialize();
+
+                console.log(data)
+
+                $('#enviarconsulta').attr("disabled", "disabled");
+
+
+
+
+
+                $.ajax({
+                    url: '<%= saveMessage_path %>',
+                    error: function() {
+
+                    },
+                    data:data,
+                    success: function(data) {
+                        $('#enviarconsulta').removeAttr("disabled");
+                        alert('Gracias por escribir el vendedor se pondra en contacto con usted')
+                        $('.e').val('')
+                    },
+                    type: 'GET'
+                });
+
+
+
+
+                return false;
+            })
+
+
+
+        })
+
+    </script>
+
+<% end%>
