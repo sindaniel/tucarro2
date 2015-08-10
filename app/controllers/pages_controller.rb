@@ -32,7 +32,7 @@ GROUP BY T.id
 
 
 
-    @extras = Extra.find_by_sql("SELECT * FROM extras E
+    @extras = Extra.find_by_sql("SELECT E.* FROM extras E
 INNER JOIN brand_extras M ON E.brand_extra_id = M.id
 WHERE
 E.name LIKE '%"+params[:consulta]+"%' OR
@@ -41,7 +41,7 @@ GROUP BY E.id
 ")
 
 
-    @services = Service.find_by_sql("SELECT * FROM services S
+    @services = Service.find_by_sql("SELECT S.* FROM services S
 INNER JOIN type_services T ON S.type_service_id = T.id
 WHERE S.name LIKE '%"+params[:consulta]+"%' OR
 T.name LIKE '%"+params[:consulta]+"%'
