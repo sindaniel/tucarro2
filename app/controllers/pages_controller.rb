@@ -15,11 +15,38 @@ class PagesController < ApplicationController
 
   def busqueda
 
-    @trucks = Truck.where(nombre: params[:consulta]).order(:nombre).all
-    @extras = Extra.where(name: params[:consulta]).order(:name).all
 
 
-    @services = Service.where(name: params[:consulta]).order(:name).all
+    @trucks = Truck.find_by_sql("SELECT * FROM trucks T
+INNER JOIN brand_trucks M ON  T.brand_truck_id = M.id
+INNER JOIN type_trucks C ON  T.type_truck_id = C.id
+INNER JOIN sub_trucks S ON  T.sub_truck_id = S.id
+WHERE
+T.nombre LIKE '%"+params[:consulta]+"%' OR
+M.name LIKE '%"+params[:consulta]+"%' OR
+C.name LIKE '%"+params[:consulta]+"%' OR
+S.name LIKE '%"+params[:consulta]+"%'
+GROUP BY T.id
+")
+
+
+
+
+    @extras = Extra.find_by_sql("SELECT * FROM extras E
+INNER JOIN brand_extras M ON E.brand_extra_id = M.id
+WHERE
+E.name LIKE '%"+params[:consulta]+"%' OR
+M.name LIKE '%"+params[:consulta]+"%'
+GROUP BY E.id
+")
+
+
+    @services = Service.find_by_sql("SELECT * FROM services S
+INNER JOIN type_services T ON S.type_service_id = T.id
+WHERE S.name LIKE '%"+params[:consulta]+"%' OR
+T.name LIKE '%"+params[:consulta]+"%'
+GROUP BY S.id
+")
 
   end
 

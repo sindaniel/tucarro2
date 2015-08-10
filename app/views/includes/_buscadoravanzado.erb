@@ -231,18 +231,50 @@
   </div><!-- /.sidebar-widget -->
 
   <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-    <div id="advertisement" class="advertisement">
+    <%
+        cuenta  = @banners.count
 
-      <% @banners.each do |banner| %>
+
+        b1 = Random.rand(1...cuenta)
+
+        b2 =  Random.rand(1...cuenta)
+       new = b2
+
+       if b1 == b2
+
+          new = b2-1
+            if new == 0
+               new = b2+1
+            end
+
+
+       end
+
+
+    %>
+
+    <%=  %>
+
+
+
+
           <div class="item bg-color">
-            <%= image_tag('bi01.jpg') %>
-            <%= image_tag banner.picture(:medium ), :class=>'img-thumbnail img-responsive' %>
+            <a href="<%= @banners[b1].url %>"><%= image_tag @banners[b1].picture(:medium ), :style=>'max-width:100%; width:100%' %></a>
+            <br/><br/>
           </div><!-- /.item -->
-          <% end %>
+
+
+    <div class="item bg-color">
+      <a href="<%= @banners[new].url %>"><%= image_tag @banners[new].picture(:medium ), :style=>'max-width:100%; width:100%' %></a>
+      <br/><br/>
+    </div><!-- /.item -->
 
 
 
-    </div><!-- /.owl-carousel -->
+
+
+
+
   </div>
 
   <!-- ============================================== COLOR: END ============================================== -->

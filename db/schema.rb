@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803150405) do
+ActiveRecord::Schema.define(version: 20150810202938) do
 
   create_table "addpicturetobanners", force: true do |t|
     t.datetime "created_at"
